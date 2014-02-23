@@ -2,8 +2,6 @@
 
 import wx
 import _window
-import wx.html2
-import wx.html
 
 # Implementing _mainFrame
 class _interface( _window._mainFrame ):
@@ -17,28 +15,24 @@ class _interface( _window._mainFrame ):
             self.lessonsManager.ChangeLesson(i)
             lesson = wx.MenuItem( self.m_menu1, wx.ID_ANY, self.lessonsManager.GetName(), wx.EmptyString, wx.ITEM_NORMAL )
             self.LessonMenu.AppendItem( lesson )
-            self.Bind( wx.EVT_MENU, self.OnLessonClicked, id = lesson.GetId() )
+            self.Bind( wx.EVT_MENU, lambda evt, temp=i: self.OnLessonClicked(evt, temp), id = lesson.GetId() )
             i += 1
 
         self.lessonsManager.ChangeLesson(1)
-        self.CodeBox.SetValue(self.lessonsManager.LoadCode())
-        self.LessonName.SetLabelText(self.lessonsManager.GetName())
-        self.InstructionsWindow.SetPage(self.lessonsManager.GetInstructions(), "")
-        self.StatusBar.SetStatusText("Ready")
+        self.ConfigureLesson()
 
     # Handlers for _mainFrame events.
     def OnPreviousButtonClicked( self, event ):
         self.lessonsManager.StoreCode(self.CodeBox.GetValue())
         self.lessonsManager.PreviousLesson()
-        self.CodeBox.SetValue(self.lessonsManager.LoadCode())
-        self.LessonName.SetLabelText(self.lessonsManager.GetName())
-        self.InstructionsWindow.SetPage(self.lessonsManager.GetInstructions(), "")
-        self.StatusBar.SetStatusText("Ready")
-
+        self.ConfigureLesson()
 
     def OnNextButtonClicked( self, event ):
         self.lessonsManager.StoreCode(self.CodeBox.GetValue())
         self.lessonsManager.NextLesson()
+        self.ConfigureLesson()
+
+    def ConfigureLesson( self ):
         self.CodeBox.SetValue(self.lessonsManager.LoadCode())
         self.LessonName.SetLabelText(self.lessonsManager.GetName())
         self.InstructionsWindow.SetPage(self.lessonsManager.GetInstructions(), "")
@@ -89,6 +83,7 @@ class _interface( _window._mainFrame ):
     def OnRunProgramClicked( self, event ):
         self.parent.load(self.CodeBox.GetText())
 
-    def OnLessonClicked( self, event ):
-        print event
+    def OnLessonClicked( self, event, lesson ):
+        self.lessonsManager.ChangeLesson(lesson)
+        self.ConfigureLesson()
 
