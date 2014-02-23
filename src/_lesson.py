@@ -5,43 +5,64 @@ call get_lessons to get a list of all lessons that the interface should
 present. """
 
 import os
-import _interface
+import ConfigParser
 
-class Lesson:
+class LessonManager:
     """ Basically just a struct of lesson related data. """
 
-    def __init__(self, number):
-        """ The setup_and_loop flag lets the interface know wether setup and
-        loop text boxes should be shown. Notice that in lesson one there is
-        only one text box presented to the user and it is implicitly a loop
-        box. Setup is introduce later. The text is just the lesson text. """
+    def __init__(self):
 
-        self.lesson_id = number
+        self.code = {}
+        self.number = 1
+        self.lessons = ConfigParser.ConfigParser()
+        self.lessons.read('content/lessons.ini')
 
-        # read saved data from a file and store here
-        self.saved_data = []
+        self.header = ReadFile('content/header.html')
+        self.footer = ReadFile('content/footer.html')
 
-        # load the template for the page
-        self.page = _interface.ReadFile("lessons/lesson"+str(self.lesson_id)+".html")
-        
-    def GetPageSource(self):
-        # insert saved data here.
+    def ChangeLesson(self, number):
+        if(self.Exists(number)):
+            self.number = number
 
-        page = self.page.replace('{SAVE}','')
-        
-        return page
+    def PreviousLesson(self):
+        self.ChangeLesson(self.number - 1)
 
-        
+    def NextLesson(self):
+        self.ChangeLesson(self.number + 1)
 
-def get_lessons(lesson_dir):
-    """ Add lessons to lessons and return. """
-    lessons = {}
-    
-    for index in range(0, 9):
-        lessons[index] = (Lesson(index))
+    def GetInstructions(self):
+        return str(self.header) + ReadFile('lessons/lesson'+str(self.number)+'.html') + str(self.footer)
 
-    return lessons
+    def GetName(self):
+        return str(self.number) + ") " + self.lessons.get("Lesson"+str(self.number), "name")
+
+    def ShowMain(self):
+        return self.lessons.getboolean("Lesson"+str(self.number), "main")
+
+    def ShowLoop(self):
+        return self.lessons.getboolean("Lesson"+str(self.number), "loop")
+
+    def StoreCode(self, code):
+        self.code[self.number] = code
+
+    def LoadCode(self):
+        if(self.number in self.code.keys()):
+            return self.code[self.number];
+        else:
+            return "main(){\n\n\t//Insert Code Here\n\n}"
+
+    def Exists(self, number):
+        return self.lessons.has_section("Lesson"+str(number))
+
+
+# Read data from a file
+def ReadFile(filepath):
+    try:
+	      with open(filepath) as f:
+	          content = f.readlines()
+	          return '\r\n'.join(content)
+    except:
+	return False
 
 if __name__ == '__main__':
     pass # test _lesson.py
-
