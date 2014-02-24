@@ -113,4 +113,5 @@ class _interface( _window._mainFrame ):
 
     def OnCodeModified( self, event ):
         self.lessonsManager.modified = True
+        event.Skip()
 

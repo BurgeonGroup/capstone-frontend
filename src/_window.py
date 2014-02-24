@@ -132,7 +132,7 @@ class _mainFrame ( wx.Frame ):
 		self.Bind( wx.EVT_CLOSE, self.OnApplicationClosing )
 		self.PreviousButton.Bind( wx.EVT_BUTTON, self.OnPreviousButtonClicked )
 		self.NextButton.Bind( wx.EVT_BUTTON, self.OnNextButtonClicked )
-		self.CodeBox.Bind( wx.EVT_KEY_UP, self.OnCodeModified )
+		self.CodeBox.Bind( wx.EVT_KEY_DOWN, self.OnCodeModified )
 		self.m_button3.Bind( wx.EVT_BUTTON, self.OnRunProgramClicked )
 		self.Bind( wx.EVT_MENU, self.OnSaveClicked, id = self.SaveButton.GetId() )
 		self.Bind( wx.EVT_MENU, self.OnSaveAsClicked, id = self.SaveAsButton.GetId() )

@@ -785,8 +785,8 @@
                                                 <event name="OnChar"></event>
                                                 <event name="OnEnterWindow"></event>
                                                 <event name="OnEraseBackground"></event>
-                                                <event name="OnKeyDown"></event>
-                                                <event name="OnKeyUp">OnCodeModified</event>
+                                                <event name="OnKeyDown">OnCodeModified</event>
+                                                <event name="OnKeyUp"></event>
                                                 <event name="OnKillFocus"></event>
                                                 <event name="OnLeaveWindow"></event>
                                                 <event name="OnLeftDClick"></event>
