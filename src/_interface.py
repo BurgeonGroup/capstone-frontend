@@ -33,7 +33,8 @@ class _interface( _window._mainFrame ):
         self.ConfigureLesson()
 
     def ConfigureLesson( self ):
-        self.CodeBox.SetValue(self.lessonsManager.LoadCode())
+        self.CodeBox.ClearAll()
+        self.CodeBox.AddText(self.lessonsManager.LoadCode())
         self.LessonName.SetLabelText(self.lessonsManager.GetName())
         self.InstructionsWindow.SetPage(self.lessonsManager.GetInstructions(), "")
         self.StatusBar.SetStatusText("Ready")
@@ -79,6 +80,8 @@ class _interface( _window._mainFrame ):
             return
 
         self.lessonsManager.saveFilePath = saveFileDialog.GetPath()
+        if(self.lessonsManager.saveFilePath[-6:] != ".blink"):
+            self.lessonsManager.saveFilePath += ".blink"
         self.OnSaveClicked(None)
 
     def OnStartShowClicked( self, event ):
@@ -98,8 +101,9 @@ class _interface( _window._mainFrame ):
     def OnApplicationClosing( self, event ):
         if(self.lessonsManager.modified == True):
             dlg = wx.MessageDialog(self, 'You have unsaved work. Would you like to save your progress?', 'Save', wx.YES_NO | wx.ICON_QUESTION)
+            result = dlg.ShowModal()
             dlg.Destroy()
-            if(dlg.ShowModal() == wx.ID_YES):
+            if(result == wx.ID_YES):
                 self.OnSaveClicked(None)
         event.Skip()
 
