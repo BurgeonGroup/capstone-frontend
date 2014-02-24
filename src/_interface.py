@@ -12,6 +12,7 @@ class _interface( _window._mainFrame ):
         self.lessonsManager = lessonsManager
 
         i = 1
+        # Load menu items for each lesson in the menu bar
         while(self.lessonsManager.Exists(i)):
             self.lessonsManager.ChangeLesson(i)
             lesson = wx.MenuItem( self.m_menu1, wx.ID_ANY, self.lessonsManager.GetName(), wx.EmptyString, wx.ITEM_NORMAL )
@@ -19,6 +20,7 @@ class _interface( _window._mainFrame ):
             self.Bind( wx.EVT_MENU, lambda evt, temp=i: self.OnLessonClicked(evt, temp), id = lesson.GetId() )
             i += 1
 
+        # Load the first lesson to the interface
         self.lessonsManager.ChangeLesson(1)
         self.ConfigureLesson()
 
@@ -40,6 +42,18 @@ class _interface( _window._mainFrame ):
         self.StatusBar.SetStatusText("Ready")
         self.CodeBox.EmptyUndoBuffer()
 
+    def OnNewClicked( self, event ):
+        # Check if there is modified content, and ask if they want to save it.
+        self.OnApplicationClosing(None)
+
+        # Clear the code dic object
+        self.lessonsManager.code = {}
+
+        # Change to the first lesson and configure the interface
+        self.lessonsManager.ChangeLesson(1)
+        self.ConfigureLesson()
+        if event: event.Skip()
+
     def OnOpenClicked( self, event):
         # Check if there is modified content, and ask if they want to save it.
         self.OnApplicationClosing(None)
@@ -47,10 +61,14 @@ class _interface( _window._mainFrame ):
         # Prompt the user for the file
         openFileDialog = wx.FileDialog(self, "Open blink file", "", "", "blink files (*.blink)|*.blink", wx.FD_OPEN | wx.FD_FILE_MUST_EXIST)
 
+        # if the user has clicked cancel
         if openFileDialog.ShowModal() == wx.ID_CANCEL:
             return
 
+        # Save the filepath
         self.lessonsManager.saveFilePath = openFileDialog.GetPath()
+
+        # Open the file and load the code
         try:
             f = open(self.lessonsManager.saveFilePath,'r')
             self.lessonsManager.code = cPickle.loads(f.read())
@@ -62,11 +80,18 @@ class _interface( _window._mainFrame ):
             self.StatusBar.SetStatusText("Saved")
             self.ConfigureLesson()
 
+        if event: event.Skip()
+
     def OnSaveClicked( self, event ):
+        # if the filepath does not exist, create a Save As Event
         if(self.lessonsManager.saveFilePath == None):
             return self.OnSaveAsClicked(None)
 
+        # Store the code for the current lesson
         self.lessonsManager.StoreCode(self.CodeBox.GetValue())
+        if event: event.Skip()
+
+        # Save the code
         try:
             f = open(self.lessonsManager.saveFilePath,'w')
             f.write(cPickle.dumps(self.lessonsManager.code))
@@ -81,14 +106,21 @@ class _interface( _window._mainFrame ):
         return False
 
     def OnSaveAsClicked( self, event ):
+        # prompt the user for the save file
         saveFileDialog = wx.FileDialog(self, "Save blink file", "", "", "blink files (*.blink)|*.blink", wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT)
 
+        if event: event.Skip()
+
+        # if the user has clicked cancel
         if saveFileDialog.ShowModal() == wx.ID_CANCEL:
             return False
 
+        # Save the file path and fix the .blink for linux machines
         self.lessonsManager.saveFilePath = saveFileDialog.GetPath()
         if(self.lessonsManager.saveFilePath[-6:] != ".blink"):
             self.lessonsManager.saveFilePath += ".blink"
+
+        # Save the file
         return self.OnSaveClicked(None)
 
     def OnStartShowClicked( self, event ):
@@ -110,6 +142,7 @@ class _interface( _window._mainFrame ):
         event.Skip()
 
     def OnApplicationClosing( self, event ):
+        # if the code has been modified, prompt the user to save
         if(self.lessonsManager.modified == True):
             dlg = wx.MessageDialog(self, 'You have unsaved work. Would you like to save your progress?', 'Save', wx.YES_NO | wx.ICON_QUESTION)
             result = dlg.ShowModal()

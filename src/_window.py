@@ -97,6 +97,9 @@ class _mainFrame ( wx.Frame ):
 		self.StatusBar = self.CreateStatusBar( 1, wx.ST_SIZEGRIP, wx.ID_ANY )
 		self.m_menubar1 = wx.MenuBar( 0 )
 		self.m_menu1 = wx.Menu()
+		self.m_menuItem19 = wx.MenuItem( self.m_menu1, wx.ID_ANY, u"New"+ u"\t" + u"Ctrl+N", wx.EmptyString, wx.ITEM_NORMAL )
+		self.m_menu1.AppendItem( self.m_menuItem19 )
+		
 		self.SaveButton = wx.MenuItem( self.m_menu1, wx.ID_ANY, u"Save"+ u"\t" + u"Ctrl+S", wx.EmptyString, wx.ITEM_NORMAL )
 		self.m_menu1.AppendItem( self.SaveButton )
 		
@@ -144,6 +147,7 @@ class _mainFrame ( wx.Frame ):
 		self.NextButton.Bind( wx.EVT_BUTTON, self.OnNextButtonClicked )
 		self.CodeBox.Bind( wx.EVT_KEY_DOWN, self.OnCodeModified )
 		self.m_button3.Bind( wx.EVT_BUTTON, self.OnRunProgramClicked )
+		self.Bind( wx.EVT_MENU, self.OnNewClicked, id = self.m_menuItem19.GetId() )
 		self.Bind( wx.EVT_MENU, self.OnSaveClicked, id = self.SaveButton.GetId() )
 		self.Bind( wx.EVT_MENU, self.OnSaveAsClicked, id = self.SaveAsButton.GetId() )
 		self.Bind( wx.EVT_MENU, self.OnOpenClicked, id = self.OpenButton.GetId() )
@@ -174,6 +178,9 @@ class _mainFrame ( wx.Frame ):
 		event.Skip()
 	
 	def OnRunProgramClicked( self, event ):
+		event.Skip()
+	
+	def OnNewClicked( self, event ):
 		event.Skip()
 	
 	def OnSaveClicked( self, event ):
