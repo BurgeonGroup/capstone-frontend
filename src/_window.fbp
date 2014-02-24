@@ -1004,10 +1004,10 @@
                         <property name="help"></property>
                         <property name="id">wxID_ANY</property>
                         <property name="kind">wxITEM_NORMAL</property>
-                        <property name="label">New Workspace</property>
+                        <property name="label">New</property>
                         <property name="name">m_menuItem19</property>
                         <property name="permission">none</property>
-                        <property name="shortcut"></property>
+                        <property name="shortcut">Ctrl+N</property>
                         <property name="unchecked_bitmap"></property>
                         <event name="OnMenuSelection">OnNewClicked</event>
                         <event name="OnUpdateUI"></event>
