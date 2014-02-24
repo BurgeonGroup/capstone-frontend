@@ -38,6 +38,7 @@ class _interface( _window._mainFrame ):
         self.LessonName.SetLabelText(self.lessonsManager.GetName())
         self.InstructionsWindow.SetPage(self.lessonsManager.GetInstructions(), "")
         self.StatusBar.SetStatusText("Ready")
+        self.CodeBox.EmptyUndoBuffer()
 
     def OnOpenClicked( self, event):
         openFileDialog = wx.FileDialog(self, "Open blink file", "", "", "blink files (*.blink)|*.blink", wx.FD_OPEN | wx.FD_FILE_MUST_EXIST)
@@ -98,6 +99,10 @@ class _interface( _window._mainFrame ):
         self.lessonsManager.ChangeLesson(lesson)
         self.ConfigureLesson()
 
+    def OnApplicationStarted( self, event ):
+        self.ResetUndoRedoButtons()
+        event.Skip()
+
     def OnApplicationClosing( self, event ):
         if(self.lessonsManager.modified == True):
             dlg = wx.MessageDialog(self, 'You have unsaved work. Would you like to save your progress?', 'Save', wx.YES_NO | wx.ICON_QUESTION)
@@ -113,5 +118,17 @@ class _interface( _window._mainFrame ):
 
     def OnCodeModified( self, event ):
         self.lessonsManager.modified = True
+        self.ResetUndoRedoButtons()
         event.Skip()
 
+    def UndoButtonClicked( self, event ):
+        self.CodeBox.Undo()
+        self.ResetUndoRedoButtons()
+
+    def RedoButtonClicked( self, event ):
+        self.CodeBox.Redo()
+        self.ResetUndoRedoButtons()
+
+    def ResetUndoRedoButtons(self):
+        self.UndoButton.Enable(self.CodeBox.CanUndo())
+        self.RedoButton.Enable(self.CodeBox.CanRedo())

@@ -114,6 +114,15 @@ class _mainFrame ( wx.Frame ):
 		
 		self.m_menubar1.Append( self.m_menu1, u"File" ) 
 		
+		self.m_menu6 = wx.Menu()
+		self.UndoButton = wx.MenuItem( self.m_menu6, wx.ID_ANY, u"Undo"+ u"\t" + u"Ctrl+Z", wx.EmptyString, wx.ITEM_NORMAL )
+		self.m_menu6.AppendItem( self.UndoButton )
+		
+		self.RedoButton = wx.MenuItem( self.m_menu6, wx.ID_ANY, u"Redo"+ u"\t" + u"Ctrl+Y", wx.EmptyString, wx.ITEM_NORMAL )
+		self.m_menu6.AppendItem( self.RedoButton )
+		
+		self.m_menubar1.Append( self.m_menu6, u"Edit" ) 
+		
 		self.LessonMenu = wx.Menu()
 		self.m_menubar1.Append( self.LessonMenu, u"Lesson" ) 
 		
@@ -129,6 +138,7 @@ class _mainFrame ( wx.Frame ):
 		self.Centre( wx.BOTH )
 		
 		# Connect Events
+		self.Bind( wx.EVT_ACTIVATE, self.OnApplicationStarted )
 		self.Bind( wx.EVT_CLOSE, self.OnApplicationClosing )
 		self.PreviousButton.Bind( wx.EVT_BUTTON, self.OnPreviousButtonClicked )
 		self.NextButton.Bind( wx.EVT_BUTTON, self.OnNextButtonClicked )
@@ -139,6 +149,8 @@ class _mainFrame ( wx.Frame ):
 		self.Bind( wx.EVT_MENU, self.OnOpenClicked, id = self.OpenButton.GetId() )
 		self.Bind( wx.EVT_MENU, self.OnStartShowClicked, id = self.StartShowButton.GetId() )
 		self.Bind( wx.EVT_MENU, self.OnExitClicked, id = self.ExitButton.GetId() )
+		self.Bind( wx.EVT_MENU, self.UndoButtonClicked, id = self.UndoButton.GetId() )
+		self.Bind( wx.EVT_MENU, self.RedoButtonClicked, id = self.RedoButton.GetId() )
 		self.Bind( wx.EVT_MENU, self.OnAboutClicked, id = self.m_menuItem10.GetId() )
 	
 	def __del__( self ):
@@ -146,6 +158,9 @@ class _mainFrame ( wx.Frame ):
 	
 	
 	# Virtual event handlers, overide them in your derived class
+	def OnApplicationStarted( self, event ):
+		event.Skip()
+	
 	def OnApplicationClosing( self, event ):
 		event.Skip()
 	
@@ -174,6 +189,12 @@ class _mainFrame ( wx.Frame ):
 		event.Skip()
 	
 	def OnExitClicked( self, event ):
+		event.Skip()
+	
+	def UndoButtonClicked( self, event ):
+		event.Skip()
+	
+	def RedoButtonClicked( self, event ):
 		event.Skip()
 	
 	def OnAboutClicked( self, event ):

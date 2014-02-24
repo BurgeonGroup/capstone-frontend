@@ -53,7 +53,7 @@
             <property name="window_name">MainWindow</property>
             <property name="window_style">wxTAB_TRAVERSAL</property>
             <property name="xrc_skip_sizer">1</property>
-            <event name="OnActivate"></event>
+            <event name="OnActivate">OnApplicationStarted</event>
             <event name="OnActivateApp"></event>
             <event name="OnAuiFindManager"></event>
             <event name="OnAuiPaneButton"></event>
@@ -1070,6 +1070,41 @@
                         <property name="shortcut"></property>
                         <property name="unchecked_bitmap"></property>
                         <event name="OnMenuSelection">OnExitClicked</event>
+                        <event name="OnUpdateUI"></event>
+                    </object>
+                </object>
+                <object class="wxMenu" expanded="1">
+                    <property name="label">Edit</property>
+                    <property name="name">m_menu6</property>
+                    <property name="permission">protected</property>
+                    <object class="wxMenuItem" expanded="1">
+                        <property name="bitmap"></property>
+                        <property name="checked">0</property>
+                        <property name="enabled">1</property>
+                        <property name="help"></property>
+                        <property name="id">wxID_ANY</property>
+                        <property name="kind">wxITEM_NORMAL</property>
+                        <property name="label">Undo</property>
+                        <property name="name">UndoButton</property>
+                        <property name="permission">none</property>
+                        <property name="shortcut">Ctrl+Z</property>
+                        <property name="unchecked_bitmap"></property>
+                        <event name="OnMenuSelection">UndoButtonClicked</event>
+                        <event name="OnUpdateUI"></event>
+                    </object>
+                    <object class="wxMenuItem" expanded="1">
+                        <property name="bitmap"></property>
+                        <property name="checked">0</property>
+                        <property name="enabled">1</property>
+                        <property name="help"></property>
+                        <property name="id">wxID_ANY</property>
+                        <property name="kind">wxITEM_NORMAL</property>
+                        <property name="label">Redo</property>
+                        <property name="name">RedoButton</property>
+                        <property name="permission">none</property>
+                        <property name="shortcut">Ctrl+Y</property>
+                        <property name="unchecked_bitmap"></property>
+                        <event name="OnMenuSelection">RedoButtonClicked</event>
                         <event name="OnUpdateUI"></event>
                     </object>
                 </object>
