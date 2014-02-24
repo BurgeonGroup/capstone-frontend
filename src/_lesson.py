@@ -39,20 +39,17 @@ class LessonManager:
     def GetName(self):
         return str(self.number) + ") " + self.lessons.get("Lesson"+str(self.number), "name")
 
-    def ShowMain(self):
-        return self.lessons.getboolean("Lesson"+str(self.number), "main")
-
-    def ShowLoop(self):
-        return self.lessons.getboolean("Lesson"+str(self.number), "loop")
-
     def StoreCode(self, code):
         self.code[self.number] = code
 
     def LoadCode(self):
+        code = ""
         if(self.number in self.code.keys()):
-            return self.code[self.number];
-        else:
-            return "main(){\n\n\t//Insert Code Here\n\n}"
+            code = self.code[self.number];
+        elif(self.lessons.has_option("Lesson"+str(self.number), "code")):
+            code = self.lessons.get("Lesson"+str(self.number), "code")
+        else: code = "main() {\n\n\t//Insert Code Here\n\n}"
+        return code.replace('\\n',"\n").replace('\\t',"\t")
 
     def Exists(self, number):
         return self.lessons.has_section("Lesson"+str(number))
