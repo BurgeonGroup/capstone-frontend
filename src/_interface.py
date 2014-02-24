@@ -73,17 +73,19 @@ class _interface( _window._mainFrame ):
         finally:
             self.StatusBar.SetStatusText("Saved")
             self.lessonsManager.modified = False
+            return True
+        return False
 
     def OnSaveAsClicked( self, event ):
         saveFileDialog = wx.FileDialog(self, "Save blink file", "", "", "blink files (*.blink)|*.blink", wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT)
 
         if saveFileDialog.ShowModal() == wx.ID_CANCEL:
-            return
+            return False
 
         self.lessonsManager.saveFilePath = saveFileDialog.GetPath()
         if(self.lessonsManager.saveFilePath[-6:] != ".blink"):
             self.lessonsManager.saveFilePath += ".blink"
-        self.OnSaveClicked(None)
+        return self.OnSaveClicked(None)
 
     def OnStartShowClicked( self, event ):
         # TODO: Implement OnStartShowClicked
@@ -109,8 +111,9 @@ class _interface( _window._mainFrame ):
             result = dlg.ShowModal()
             dlg.Destroy()
             if(result == wx.ID_YES):
-                self.OnSaveClicked(None)
-        event.Skip()
+                if self.OnSaveClicked(None):
+                    event.Skip()
+            else: event.Skip()
 
     def OnAboutClicked( self, event ):
         # TODO: Implement OnAboutClicked
