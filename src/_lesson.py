@@ -17,6 +17,9 @@ class LessonManager:
         self.lessons = ConfigParser.ConfigParser()
         self.lessons.read('content/lessons.ini')
 
+        self.saveFilePath = None
+        self.modified = False
+
         self.header = ReadFile('content/header.html')
         self.footer = ReadFile('content/footer.html')
 

@@ -62,7 +62,7 @@
             <event name="OnAuiPaneRestore"></event>
             <event name="OnAuiRender"></event>
             <event name="OnChar"></event>
-            <event name="OnClose"></event>
+            <event name="OnClose">OnApplicationClosing</event>
             <event name="OnEnterWindow"></event>
             <event name="OnEraseBackground"></event>
             <event name="OnHibernate"></event>
@@ -1019,7 +1019,7 @@
                         <property name="help"></property>
                         <property name="id">wxID_ANY</property>
                         <property name="kind">wxITEM_NORMAL</property>
-                        <property name="label">Save</property>
+                        <property name="label">Save...</property>
                         <property name="name">SaveButton</property>
                         <property name="permission">none</property>
                         <property name="shortcut">Ctrl+S</property>
@@ -1062,6 +1062,26 @@
                     <property name="label">Lesson</property>
                     <property name="name">LessonMenu</property>
                     <property name="permission">protected</property>
+                </object>
+                <object class="wxMenu" expanded="1">
+                    <property name="label">Help</property>
+                    <property name="name">m_menu5</property>
+                    <property name="permission">protected</property>
+                    <object class="wxMenuItem" expanded="1">
+                        <property name="bitmap"></property>
+                        <property name="checked">0</property>
+                        <property name="enabled">1</property>
+                        <property name="help"></property>
+                        <property name="id">wxID_ANY</property>
+                        <property name="kind">wxITEM_NORMAL</property>
+                        <property name="label">About</property>
+                        <property name="name">m_menuItem10</property>
+                        <property name="permission">none</property>
+                        <property name="shortcut"></property>
+                        <property name="unchecked_bitmap"></property>
+                        <event name="OnMenuSelection">OnAboutClicked</event>
+                        <event name="OnUpdateUI"></event>
+                    </object>
                 </object>
             </object>
         </object>
