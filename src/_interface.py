@@ -41,6 +41,10 @@ class _interface( _window._mainFrame ):
         self.CodeBox.EmptyUndoBuffer()
 
     def OnOpenClicked( self, event):
+        # Check if there is modified content, and ask if they want to save it.
+        self.OnApplicationClosing(None)
+
+        # Prompt the user for the file
         openFileDialog = wx.FileDialog(self, "Open blink file", "", "", "blink files (*.blink)|*.blink", wx.FD_OPEN | wx.FD_FILE_MUST_EXIST)
 
         if openFileDialog.ShowModal() == wx.ID_CANCEL:
@@ -111,9 +115,9 @@ class _interface( _window._mainFrame ):
             result = dlg.ShowModal()
             dlg.Destroy()
             if(result == wx.ID_YES):
-                if self.OnSaveClicked(None):
-                    event.Skip()
-            else: event.Skip()
+                if not self.OnSaveClicked(None):
+                    return
+        if event: event.Skip()
 
     def OnAboutClicked( self, event ):
         # TODO: Implement OnAboutClicked
