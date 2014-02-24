@@ -44,8 +44,9 @@ class _interface( _window._mainFrame ):
         if openFileDialog.ShowModal() == wx.ID_CANCEL:
             return
 
+        self.lessonsManager.saveFilePath = openFileDialog.GetPath()
         try:
-            f = open(openFileDialog.GetPath(),'r')
+            f = open(self.lessonsManager.saveFilePath,'r')
             self.lessonsManager.code = cPickle.loads(f.read())
             f.close()
         except:
@@ -59,6 +60,7 @@ class _interface( _window._mainFrame ):
         if(self.lessonsManager.saveFilePath == None):
             return self.OnSaveAsClicked(None)
 
+        self.lessonsManager.StoreCode(self.CodeBox.GetValue())
         try:
             f = open(self.lessonsManager.saveFilePath,'w')
             f.write(cPickle.dumps(self.lessonsManager.code))
@@ -71,7 +73,6 @@ class _interface( _window._mainFrame ):
             self.lessonsManager.modified = False
 
     def OnSaveAsClicked( self, event ):
-        self.lessonsManager.StoreCode(self.CodeBox.GetValue())
         saveFileDialog = wx.FileDialog(self, "Save blink file", "", "", "blink files (*.blink)|*.blink", wx.FD_SAVE | wx.FD_OVERWRITE_PROMPT)
 
         if saveFileDialog.ShowModal() == wx.ID_CANCEL:

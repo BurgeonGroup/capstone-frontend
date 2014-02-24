@@ -653,7 +653,7 @@
                                     <property name="aui_position"></property>
                                     <property name="aui_row"></property>
                                     <property name="best_size"></property>
-                                    <property name="bg"></property>
+                                    <property name="bg">255,255,255</property>
                                     <property name="caption"></property>
                                     <property name="caption_visible">1</property>
                                     <property name="center_pane">0</property>
@@ -786,7 +786,7 @@
                                                 <event name="OnEnterWindow"></event>
                                                 <event name="OnEraseBackground"></event>
                                                 <event name="OnKeyDown"></event>
-                                                <event name="OnKeyUp"></event>
+                                                <event name="OnKeyUp">OnCodeModified</event>
                                                 <event name="OnKillFocus"></event>
                                                 <event name="OnLeaveWindow"></event>
                                                 <event name="OnLeftDClick"></event>
@@ -1004,12 +1004,12 @@
                         <property name="help"></property>
                         <property name="id">wxID_ANY</property>
                         <property name="kind">wxITEM_NORMAL</property>
-                        <property name="label">Open...</property>
-                        <property name="name">OpenButton</property>
+                        <property name="label">Save</property>
+                        <property name="name">SaveButton</property>
                         <property name="permission">none</property>
-                        <property name="shortcut">Ctrl+O</property>
+                        <property name="shortcut">Ctrl+S</property>
                         <property name="unchecked_bitmap"></property>
-                        <event name="OnMenuSelection">OnOpenClicked</event>
+                        <event name="OnMenuSelection">OnSaveClicked</event>
                         <event name="OnUpdateUI"></event>
                     </object>
                     <object class="wxMenuItem" expanded="1">
@@ -1019,12 +1019,27 @@
                         <property name="help"></property>
                         <property name="id">wxID_ANY</property>
                         <property name="kind">wxITEM_NORMAL</property>
-                        <property name="label">Save...</property>
-                        <property name="name">SaveButton</property>
+                        <property name="label">Save As...</property>
+                        <property name="name">SaveAsButton</property>
                         <property name="permission">none</property>
-                        <property name="shortcut">Ctrl+S</property>
+                        <property name="shortcut"></property>
                         <property name="unchecked_bitmap"></property>
-                        <event name="OnMenuSelection">OnSaveClicked</event>
+                        <event name="OnMenuSelection">OnSaveAsClicked</event>
+                        <event name="OnUpdateUI"></event>
+                    </object>
+                    <object class="wxMenuItem" expanded="1">
+                        <property name="bitmap"></property>
+                        <property name="checked">0</property>
+                        <property name="enabled">1</property>
+                        <property name="help"></property>
+                        <property name="id">wxID_ANY</property>
+                        <property name="kind">wxITEM_NORMAL</property>
+                        <property name="label">Open</property>
+                        <property name="name">OpenButton</property>
+                        <property name="permission">none</property>
+                        <property name="shortcut">Ctrl+O</property>
+                        <property name="unchecked_bitmap"></property>
+                        <event name="OnMenuSelection">OnOpenClicked</event>
                         <event name="OnUpdateUI"></event>
                     </object>
                     <object class="wxMenuItem" expanded="1">

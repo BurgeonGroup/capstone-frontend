@@ -305,20 +305,20 @@ class CodeTextCtrl(stc.StyledTextCtrl):
             line = self.GetCurrentLine()
 
             #The very first time of BundleMode, init the snippetPos, gotoline, etc
-            if not self.isBundleMode: #word in self.snippets.keys() and
-                self.isBundleMode = True
+            #if not self.isBundleMode: #word in self.snippets.keys() and
+            #    self.isBundleMode = True
                 #instance = TouchSnippet.TouchSnippet(self.snippets[word])
                 #instance.Build()
                 #snippet = instance.Arrange()
                 #self.currentSnippet = instance
-                self.DelWordLeft()
+           #     self.DelWordLeft()
                 #self.AddText(snippet)
-                self.GotoLine(line)
+           #     self.GotoLine(line)
                 #self.snippetLine = line
                 #self.snippetPos = pos - len(word)
 
             #move to next position
-            if self.isBundleMode:
+            #if self.isBundleMode:
                 #if event.ShiftDown():
                 #    start, end = self.currentSnippet.PrevPos()
                 #else:
@@ -331,9 +331,9 @@ class CodeTextCtrl(stc.StyledTextCtrl):
                     #return
 
                 #self.SetSelection(self.snippetPos+start, self.snippetPos+end)
-                pass
-            else:
-                event.Skip()
+                #pass
+            #else:
+            event.Skip()
 
             keywords = self.helper.GetKeywords()
             udkeys = self.helper.GetUserKeywords()
