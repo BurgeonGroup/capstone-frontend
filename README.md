@@ -27,3 +27,9 @@ Python modules you might need to install:
     1. wxPython
     2. fdpexpect
 
+## Arduino Connection
+Yellow from LEDs = yellow on connector = pin 2
+Green from LEDs = green on connector = pin 3
+Dark blue from LEDs = red on connector = GND
+Red from LEDs = black on connector = Vin
+
