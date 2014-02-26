@@ -60,7 +60,7 @@ class _mainFrame ( wx.Frame ):
 		bSizer9 = wx.BoxSizer( wx.VERTICAL )
 		
 		self.InstructionsWindow = wx.html2.WebView.New(self.m_panel2)
-		bSizer9.Add( self.InstructionsWindow, 1, wx.ALL|wx.EXPAND, 0 )
+		bSizer9.Add( self.InstructionsWindow, 1, wx.ALL|wx.EXPAND, 1 )
 		
 		
 		self.m_panel2.SetSizer( bSizer9 )
@@ -74,6 +74,8 @@ class _mainFrame ( wx.Frame ):
 		bSizer91 = wx.BoxSizer( wx.VERTICAL )
 		
 		self.MainPanel = wx.Panel( self.m_panel21, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.MainPanel.SetBackgroundColour( wx.Colour( 247, 247, 247 ) )
+		
 		bSizer15 = wx.BoxSizer( wx.VERTICAL )
 		
 		bSizer81 = wx.BoxSizer( wx.HORIZONTAL )
@@ -108,6 +110,8 @@ class _mainFrame ( wx.Frame ):
 		bSizer91.Add( self.MainPanel, 1, wx.EXPAND |wx.ALL, 0 )
 		
 		self.LoopPanel = wx.Panel( self.m_panel21, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, wx.TAB_TRAVERSAL )
+		self.LoopPanel.SetBackgroundColour( wx.Colour( 247, 247, 247 ) )
+		
 		bSizer772 = wx.BoxSizer( wx.VERTICAL )
 		
 		bSizer811 = wx.BoxSizer( wx.HORIZONTAL )
