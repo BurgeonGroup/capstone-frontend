@@ -142,7 +142,7 @@ class _interface( _window._mainFrame ):
         self.Close()
 
     def OnRunProgramClicked( self, event ):
-        self.parent.load(self.MainCodeBox.GetText())
+        self.parent.load(self.MainCodeBox.GetValue(), self.LoopCodeBox.GetValue())
 
     def OnLessonClicked( self, event, lesson ):
         self.lessonsManager.Change(lesson)

@@ -9,14 +9,14 @@ import wx
 class MyApp(wx.App):
     """ Main application. """
 
-    def load(self, loop):
+    def load(self, setup, loop):
         """ Use _loader module to load program onto Arduino via serial. """
         if not(_finddev.exists(self.dev)):
             self.dev = _finddev.finddev()
         if self.dev == "":
             self.frame.StatusBar.SetStatusText("ERROR: Unable to communicate with the Arduino LED Matrix")
             return _error.Error(_error.ARDUINO_NOT_FOUND)
-        prg = _loader.makeprg("", loop)
+        prg = _loader.makeprg(setup, loop)
 
         # _loader.load might return something other than None in future
         error = _loader.load(self.dev, self.baud, prg)
@@ -33,7 +33,6 @@ class MyApp(wx.App):
         self.frame = _interface._interface(self)
         self.SetTopWindow(self.frame)
         self.frame.Show()
-        self.frame.StatusBar.SetStatusText("Ready")
 
         return True # return success flag
 
