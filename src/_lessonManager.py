@@ -32,25 +32,20 @@ class LessonManager:
             if(lesson >= 0 and lesson < len(sections)):
                 self.lesson = sections[lesson]
                 return True
-            return False
-        else: return False
+        return False
 
     def Previous(self):
-        sections = self.lessons.sections()
         if(self.lesson == None):
-            return self.Change(0)
-        current = sections.index(self.lesson)
-        return self.Change(current-1)
+            return self.First()
+        return self.Change(self.lessons.sections().index(self.lesson) - 1)
 
     def Next(self):
-        sections = self.lessons.sections()
         if(self.lesson == None):
-            return self.Change(0)
-        current = sections.index(self.lesson)
-        return self.Change(current+1)
+            return self.First()
+        return self.Change(self.lessons.sections().index(self.lesson) + 1)
 
     def First(self):
-        self.Change(0)
+        return self.Change(0)
 
     def GetInstructions(self):
         return str(self.header) + ReadFile('lessons/' + self.lesson + '.html') + str(self.footer)
@@ -68,14 +63,14 @@ class LessonManager:
         self.code[self.lesson] = [main, loop]
 
     def LoadCode(self):
-        code = ["",""]
         if(self.lesson in self.code.keys()):
-            code = self.code[self.lesson];
-        else:
-            if(self.lessons.has_option(self.lesson, "main")):
-                code[0] = self.lessons.get(self.lesson, "main").replace('\\n',"\n").replace('\\t',"\t")
-            if(self.lessons.has_option(self.lesson, "loop")):
-                code[1] = self.lessons.get(self.lesson, "loop").replace('\\n',"\n").replace('\\t',"\t")
+            return self.code[self.lesson]
+
+        code = ["",""]
+        if(self.lessons.has_option(self.lesson, "main")):
+            code[0] = self.lessons.get(self.lesson, "main").replace('\\n',"\n").replace('\\t',"\t")
+        if(self.lessons.has_option(self.lesson, "loop")):
+            code[1] = self.lessons.get(self.lesson, "loop").replace('\\n',"\n").replace('\\t',"\t")
         return code
 
 # Read data from a file
