@@ -3,35 +3,33 @@
 import wx
 import _window
 import cPickle
+import _lessonManager
 
 # Implementing _mainFrame
 class _interface( _window._mainFrame ):
-    def __init__( self, parent, lessonsManager ):
+    def __init__( self, parent ):
         _window._mainFrame.__init__( self, None )
         self.parent = parent
-        self.lessonsManager = lessonsManager
+        self.lessonsManager = _lessonManager.LessonManager()
 
-        i = 0
         # Load menu items for each lesson in the menu bar
-        while(self.lessonsManager.Exists(i)):
-            self.lessonsManager.ChangeLesson(i)
+        while(self.lessonsManager.Next()):
             lesson = wx.MenuItem( self.m_menu1, wx.ID_ANY, self.lessonsManager.GetName(), wx.EmptyString, wx.ITEM_NORMAL )
             self.LessonMenu.AppendItem( lesson )
-            self.Bind( wx.EVT_MENU, lambda evt, temp=i: self.OnLessonClicked(evt, temp), id = lesson.GetId() )
-            i += 1
+            self.Bind( wx.EVT_MENU, lambda evt, temp=self.lessonsManager.lesson: self.OnLessonClicked(evt, temp), id = lesson.GetId() )
 
         # Load the first lesson to the interface
-        self.lessonsManager.ChangeLesson(0)
+        self.lessonsManager.First()
         self.ConfigureLesson()
 
     def OnPreviousButtonClicked( self, event ):
         self.lessonsManager.StoreCode(self.MainCodeBox.GetValue(), self.LoopCodeBox.GetValue())
-        self.lessonsManager.PreviousLesson()
+        self.lessonsManager.Previous()
         self.ConfigureLesson()
 
     def OnNextButtonClicked( self, event ):
         self.lessonsManager.StoreCode(self.MainCodeBox.GetValue(), self.LoopCodeBox.GetValue())
-        self.lessonsManager.NextLesson()
+        self.lessonsManager.Next()
         self.ConfigureLesson()
 
     def ConfigureLesson( self ):
@@ -89,8 +87,9 @@ class _interface( _window._mainFrame ):
             wx.LogError("Cannot open file '%s'."%openFileDialog.GetPath())
             self.StatusBar.SetStatusText("Failed To Open File...")
         finally:
-            self.StatusBar.SetStatusText("Saved")
+            self.lessonsManager.modified = False
             self.ConfigureLesson()
+            self.StatusBar.SetStatusText("Successfully Opened File: "+ self.lessonsManager.saveFilePath)
 
         if event: event.Skip()
 
@@ -146,7 +145,7 @@ class _interface( _window._mainFrame ):
         self.parent.load(self.MainCodeBox.GetText())
 
     def OnLessonClicked( self, event, lesson ):
-        self.lessonsManager.ChangeLesson(lesson)
+        self.lessonsManager.Change(lesson)
         self.ConfigureLesson()
 
     def OnApplicationStarted( self, event ):

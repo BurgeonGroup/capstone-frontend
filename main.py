@@ -1,6 +1,5 @@
 #!/usr/bin/python
 """ This is the main program file. """
-from src import _lesson
 from src import _interface
 from src import _loader
 from src import _finddev
@@ -31,9 +30,7 @@ class MyApp(wx.App):
         self.dev = _finddev.finddev()
         self.baud = 57600
 
-        self.lessonsManager = _lesson.LessonManager()
-
-        self.frame = _interface._interface(self, self.lessonsManager)
+        self.frame = _interface._interface(self)
         self.SetTopWindow(self.frame)
         self.frame.Show()
         self.frame.StatusBar.SetStatusText("Ready")
