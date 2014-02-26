@@ -37,23 +37,30 @@ class LessonManager:
         return str(self.header) + ReadFile('lessons/lesson'+str(self.number)+'.html') + str(self.footer)
 
     def GetName(self):
-        return str(self.number) + ") " + self.lessons.get("Lesson"+str(self.number), "name")
+        return "Lesson " + str(self.number) + ") " + self.lessons.get("Lesson"+str(self.number), "name")
 
-    def StoreCode(self, code):
-        self.code[self.number] = code
+    def HasMain(self):
+        return self.lessons.has_option("Lesson"+str(self.number), "main")
+
+    def HasLoop(self):
+        return self.lessons.has_option("Lesson"+str(self.number), "loop")
+
+    def StoreCode(self, main, loop):
+        self.code[self.number] = [main, loop]
 
     def LoadCode(self):
-        code = ""
+        code = ["",""]
         if(self.number in self.code.keys()):
             code = self.code[self.number];
-        elif(self.lessons.has_option("Lesson"+str(self.number), "code")):
-            code = self.lessons.get("Lesson"+str(self.number), "code")
-        else: code = "main() {\n\n\t//Insert Code Here\n\n}"
-        return code.replace('\\n',"\n").replace('\\t',"\t")
+        else:
+            if(self.lessons.has_option("Lesson"+str(self.number), "main")):
+                code[0] = self.lessons.get("Lesson"+str(self.number), "main").replace('\\n',"\n").replace('\\t',"\t")
+            if(self.lessons.has_option("Lesson"+str(self.number), "loop")):
+                code[1] = self.lessons.get("Lesson"+str(self.number), "loop").replace('\\n',"\n").replace('\\t',"\t")
+        return code
 
     def Exists(self, number):
         return self.lessons.has_section("Lesson"+str(number))
-
 
 # Read data from a file
 def ReadFile(filepath):

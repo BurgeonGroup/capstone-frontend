@@ -11,7 +11,7 @@ class _interface( _window._mainFrame ):
         self.parent = parent
         self.lessonsManager = lessonsManager
 
-        i = 1
+        i = 0
         # Load menu items for each lesson in the menu bar
         while(self.lessonsManager.Exists(i)):
             self.lessonsManager.ChangeLesson(i)
@@ -21,26 +21,36 @@ class _interface( _window._mainFrame ):
             i += 1
 
         # Load the first lesson to the interface
-        self.lessonsManager.ChangeLesson(1)
+        self.lessonsManager.ChangeLesson(0)
         self.ConfigureLesson()
 
     def OnPreviousButtonClicked( self, event ):
-        self.lessonsManager.StoreCode(self.CodeBox.GetValue())
+        self.lessonsManager.StoreCode(self.MainCodeBox.GetValue(), self.LoopCodeBox.GetValue())
         self.lessonsManager.PreviousLesson()
         self.ConfigureLesson()
 
     def OnNextButtonClicked( self, event ):
-        self.lessonsManager.StoreCode(self.CodeBox.GetValue())
+        self.lessonsManager.StoreCode(self.MainCodeBox.GetValue(), self.LoopCodeBox.GetValue())
         self.lessonsManager.NextLesson()
         self.ConfigureLesson()
 
     def ConfigureLesson( self ):
-        self.CodeBox.ClearAll()
-        self.CodeBox.AddText(self.lessonsManager.LoadCode())
+        self.MainCodeBox.ClearAll()
+        self.LoopCodeBox.ClearAll()
+
+        self.MainCodeBox.AddText(self.lessonsManager.LoadCode()[0])
+        self.LoopCodeBox.AddText(self.lessonsManager.LoadCode()[1])
+
         self.LessonName.SetLabelText(self.lessonsManager.GetName())
         self.InstructionsWindow.SetPage(self.lessonsManager.GetInstructions(), "")
         self.StatusBar.SetStatusText("Ready")
-        self.CodeBox.EmptyUndoBuffer()
+
+        self.MainCodeBox.EmptyUndoBuffer()
+        self.LoopCodeBox.EmptyUndoBuffer()
+
+        self.MainPanel.Show(self.lessonsManager.HasMain())
+        self.LoopPanel.Show(self.lessonsManager.HasLoop())
+        self.Layout()
 
     def OnNewClicked( self, event ):
         # Check if there is modified content, and ask if they want to save it.
@@ -48,6 +58,8 @@ class _interface( _window._mainFrame ):
 
         # Clear the code dic object
         self.lessonsManager.code = {}
+        self.lessonsManager.saveFilePath = None
+        self.lessonsManager.modified = False
 
         # Change to the first lesson and configure the interface
         self.lessonsManager.ChangeLesson(1)
@@ -88,7 +100,7 @@ class _interface( _window._mainFrame ):
             return self.OnSaveAsClicked(None)
 
         # Store the code for the current lesson
-        self.lessonsManager.StoreCode(self.CodeBox.GetValue())
+        self.lessonsManager.StoreCode(self.MainCodeBox.GetValue(), self.LoopCodeBox.GetValue())
         if event: event.Skip()
 
         # Save the code
@@ -131,14 +143,13 @@ class _interface( _window._mainFrame ):
         self.Close()
 
     def OnRunProgramClicked( self, event ):
-        self.parent.load(self.CodeBox.GetText())
+        self.parent.load(self.MainCodeBox.GetText())
 
     def OnLessonClicked( self, event, lesson ):
         self.lessonsManager.ChangeLesson(lesson)
         self.ConfigureLesson()
 
     def OnApplicationStarted( self, event ):
-        self.ResetUndoRedoButtons()
         event.Skip()
 
     def OnApplicationClosing( self, event ):
@@ -158,17 +169,4 @@ class _interface( _window._mainFrame ):
 
     def OnCodeModified( self, event ):
         self.lessonsManager.modified = True
-        self.ResetUndoRedoButtons()
         event.Skip()
-
-    def UndoButtonClicked( self, event ):
-        self.CodeBox.Undo()
-        self.ResetUndoRedoButtons()
-
-    def RedoButtonClicked( self, event ):
-        self.CodeBox.Redo()
-        self.ResetUndoRedoButtons()
-
-    def ResetUndoRedoButtons(self):
-        self.UndoButton.Enable(self.CodeBox.CanUndo())
-        self.RedoButton.Enable(self.CodeBox.CanRedo())
