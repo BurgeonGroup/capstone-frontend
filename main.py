@@ -11,29 +11,17 @@ class MyApp(wx.App):
 
     def load(self, setup, loop):
         """ Use _loader module to load program onto Arduino via serial. """
-        if not(_finddev.exists(self.dev)):
-            self.dev = _finddev.finddev()
-        if self.dev == "":
-            self.frame.StatusBar.SetStatusText("ERROR: Unable to communicate with the Arduino LED Matrix")
-            return _error.Error(_error.ARDUINO_NOT_FOUND)
-        prg = _loader.makeprg(setup, loop)
-
-        # _loader.load might return something other than None in future
-        error = _loader.load(self.dev, self.baud, prg)
+        self.loader.load(setup, loop)
         self.frame.StatusBar.SetStatusText("Done")
         return error
 
     def OnInit(self):
         """ Initialize application config and then interface config. """
         # we don't like to overide __init__ for wx.App so vars defined here
-
-        self.dev = _finddev.finddev()
-        self.baud = 57600
-
+        self.loader = _loader.Loader(_finddev.finddev(), 57600)
         self.frame = _interface._interface(self)
         self.SetTopWindow(self.frame)
         self.frame.Show()
-
         return True # return success flag
 
 

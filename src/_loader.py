@@ -9,17 +9,23 @@ def waitprompt(c):
     c.expect('\n> ')
     time.sleep(0.1)
 
-def load(device, baud, program):
+def load(device, baud, setup, loop):
     serialport = serial.Serial(device, baud, timeout=0)
     c = fdpexpect.fdspawn(serialport.fd)
     c.sendline('')
     waitprompt(c)
-    for line in program.splitlines():
+    for line in setup.splitlines():
         line = line.strip()
         if (len(line) > 0) and (line[0] != '#'):
             c.sendline(line)
             waitprompt(c)
-    c.close()
+    while True:
+        for line in loop.splitlines():
+            line = line.strip()
+            if (len(line) > 0) and (line[0] != '#'):
+                c.sendline(line)
+                waitprompt(c)
+    c.close() # unreachable ...
 
 
 class Loader:
@@ -28,15 +34,17 @@ class Loader:
         self.baud = baud
         self.proc = None
 
-    def load(self, program):
+    def load(self, setup, loop):
+        # TODO: check to see if the device is still there...
         if self.proc is not None:
             self.proc.terminate()
         self.proc = Process(target=load,
-                            args=(self.device, self.baud, program))
+                            args=(self.device, self.baud, setup, loop))
         self.proc.start()
 
 
 if __name__ == "__main__":
+    pass
     l = Loader('/dev/ttyACM0', 57600)
-    while True: l.load(raw_input("> "))
+    while True: l.load(raw_input("setup: "), raw_input("loop: "))
 
