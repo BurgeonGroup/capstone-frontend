@@ -10,7 +10,10 @@ class MyApp(wx.App):
     """ Main application. """
 
     def load(self, setup, loop):
+        print setup
+        print loop
         """ Use _loader module to load program onto Arduino via serial. """
+        """ Create a function called startup """
         self.loader.load(setup, loop)
         self.frame.StatusBar.SetStatusText("Done")
         return error

@@ -25,6 +25,10 @@ Python so our code does not crash in the middle of our demo ;)
 
 Python modules you might need to install:
     1. wxPython
+	-follow the instructions @ wiki.wxpython.org/CheckInstall to 		install wxPython 2.9
+	NOTE: you will need to specify the path to some shared 		libraries for python. Do 
+	export LD_LIBRARY_PATH=/usr/local/lib 
+	in terminal.
     2. fdpexpect
 
 ## Arduino Connection
