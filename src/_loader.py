@@ -12,9 +12,12 @@ def waitprompt(c):
 
 # replace \n with ; and all other whitespace with a single space
 def make_single_line(prg):
-    prg = re.sub("\n", ";", prg) # replace new lines with semicolons
+    prg = prg.strip()
+    prg = re.sub("\n", "; ", prg) # replace new lines with semicolons
+    prg = re.sub("{;", "{", prg)
+    prg = re.sub("};", "}", prg)
     prg = re.sub("\t", " ", prg) # replace tabs with spaces
-    prg = re.sub("[ ]*", " ", prg) # replace multiple spaces with a single space
+    prg = re.sub("[ ]+", " ", prg) # replace multiple spaces with a single space
     return prg
 
 def load(device, baud, setup, loop):
@@ -55,7 +58,11 @@ class Loader:
 
 
 if __name__ == "__main__":
-    pass
-    l = Loader('/dev/ttyACM0', 57600)
-    while True: l.load(raw_input("setup: "), raw_input("loop: "))
-
+    #l = Loader('/dev/ttyACM0', 57600)
+    #while True: l.load(raw_input("setup: "), raw_input("loop: "))
+    s = """i = 0
+while(i < 5) {
+    print i
+}
+"""
+    print make_single_line(s)
