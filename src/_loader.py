@@ -3,11 +3,19 @@
 # import _error # might need this if we actually caught exceptions?
 import serial, fdpexpect, time
 from multiprocessing import Process
+import re
 
 def waitprompt(c):
     """ Wait until we see a prompt. """
     c.expect('\n> ')
     time.sleep(0.1)
+
+# replace \n with ; and all other whitespace with a single space
+def make_single_line(prg):
+    prg = re.sub("\n", ";", prg) # replace new lines with semicolons
+    prg = re.sub("\t", " ", prg) # replace tabs with spaces
+    prg = re.sub("[ ]*", " ", prg) # replace multiple spaces with a single space
+    return prg
 
 def load(device, baud, setup, loop):
     serialport = serial.Serial(device, baud, timeout=0)
@@ -36,6 +44,9 @@ class Loader:
 
     def load(self, setup, loop):
         # TODO: check to see if the device is still there...
+	setup = make_single_line(setup)
+	loop = make_single_line(loop)
+
         if self.proc is not None:
             self.proc.terminate()
         self.proc = Process(target=load,
