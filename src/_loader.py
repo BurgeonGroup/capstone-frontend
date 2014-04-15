@@ -10,12 +10,10 @@ def waitprompt(c):
     c.expect('\n> ')
     time.sleep(0.1)
 
-# replace \n with ; and all other whitespace with a single space
+# replace \t and \n with a space and multiple spaces with a single space
 def make_single_line(prg):
     prg = prg.strip()
-    prg = re.sub("\n", "; ", prg) # replace new lines with semicolons
-    prg = re.sub("{;", "{", prg)
-    prg = re.sub("};", "}", prg)
+    prg = re.sub("\n", " ", prg) # replace new lines with semicolons
     prg = re.sub("\t", " ", prg) # replace tabs with spaces
     prg = re.sub("[ ]+", " ", prg) # replace multiple spaces with a single space
     return prg
@@ -60,9 +58,15 @@ class Loader:
 if __name__ == "__main__":
     #l = Loader('/dev/ttyACM0', 57600)
     #while True: l.load(raw_input("setup: "), raw_input("loop: "))
-    s = """i = 0
-while(i < 5) {
-    print i
+    s = """i = 0;
+while(i < 5)
+{
+    print i; print i;
+    if (i) {
+        draw(0,0);
+	if(a) draw(0,1);
+    }
+
 }
 """
     print make_single_line(s)
