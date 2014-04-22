@@ -44,7 +44,7 @@ class _mainFrame ( wx.Frame ):
 		self.PreviousButton = wx.Button( self, wx.ID_ANY, u"Previous Lesson", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.PreviousButton.SetFont( wx.Font( 14, 74, 90, 90, False, "Tahoma" ) )
 		self.PreviousButton.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
-		self.PreviousButton.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOWFRAME ) )
+		self.PreviousButton.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
 		self.PreviousButton.SetMinSize( wx.Size( 150,-1 ) )
 		
 		bSizer7.Add( self.PreviousButton, 0, wx.ALL|wx.EXPAND, 1 )
@@ -52,7 +52,7 @@ class _mainFrame ( wx.Frame ):
 		self.NextButton = wx.Button( self, wx.ID_ANY, u"Next Lesson", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.NextButton.SetFont( wx.Font( 14, 74, 90, 90, False, "Tahoma" ) )
 		self.NextButton.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
-		self.NextButton.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_WINDOWFRAME ) )
+		self.NextButton.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
 		self.NextButton.SetMinSize( wx.Size( 150,-1 ) )
 		
 		bSizer7.Add( self.NextButton, 0, wx.ALL|wx.EXPAND, 1 )
