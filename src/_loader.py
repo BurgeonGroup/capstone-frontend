@@ -1,8 +1,7 @@
 #!/usr/bin/python
 """ Functions in here handle loading bitlash programs onto the Arduino. """
 # import _error # might need this if we actually caught exceptions?
-import serial, fdpexpect, time
-from multiprocessing import Process
+import serial
 import re
 
 def waitprompt(c):
@@ -16,7 +15,6 @@ def remove_comments(prg):
         if len(line) > 0 and line.strip()[0] != '#':
             new_prg += line
     return new_prg
-
 
 # replace \t and \n with a space and multiple spaces with a single space
 def make_single_line(prg):
@@ -44,7 +42,6 @@ def load(device, baud, setup, loop):
                 waitprompt(c)
     c.close() # unreachable ...
 
-
 class Loader:
     def __init__(self, device, baud):
         self.device = device
@@ -63,4 +60,3 @@ if __name__ == "__main__":
     ser = serial.Serial('/dev/ttyACM0', 57600)
     time.sleep(1.5)
     ser.write("twinkle(red)")
-
