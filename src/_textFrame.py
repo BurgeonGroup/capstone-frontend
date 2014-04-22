@@ -196,22 +196,22 @@ class CodeTextCtrl(stc.StyledTextCtrl):
         # Auto END string
         elif chr(charc) == '"' and \
                          self.GetLineEndPosition(self.LineFromPosition(currentPos)) == currentPos:
-            self.AddText('"')
+            #self.AddText('"')
             self.SetSelection(currentPos, currentPos)
             return False
         elif chr(charc) == '\'' and \
                          self.GetLineEndPosition(self.LineFromPosition(currentPos)) == currentPos:
-            self.AddText('\'')
+            #self.AddText('\'')
             self.SetSelection(currentPos, currentPos)
             return False
         elif chr(charc) == '[' and \
                          self.GetLineEndPosition(self.LineFromPosition(currentPos)) == currentPos:
-            self.AddText(']')
+            #self.AddText(']')
             self.SetSelection(currentPos, currentPos)
             return False
         elif chr(charc) == '{' and \
                          self.GetLineEndPosition(self.LineFromPosition(currentPos)) == currentPos:
-            self.AddText('}')
+            #self.AddText('}')
             self.SetSelection(currentPos, currentPos)
             return False#}}}
 
