@@ -145,8 +145,12 @@ class _mainFrame ( wx.Frame ):
 		bSizer772.Fit( self.LoopPanel )
 		bSizer91.Add( self.LoopPanel, 1, wx.EXPAND |wx.ALL, 0 )
 		
-		self.m_button3 = wx.Button( self.m_panel21, wx.ID_ANY, u"Run Program", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer91.Add( self.m_button3, 0, wx.ALL|wx.ALIGN_RIGHT, 5 )
+		self.m_button3 = wx.Button( self.m_panel21, wx.ID_ANY, u"Play!", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_button3.SetFont( wx.Font( 20, 74, 90, 92, False, "Tahoma" ) )
+		self.m_button3.SetForegroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHTTEXT ) )
+		self.m_button3.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_HIGHLIGHT ) )
+		
+		bSizer91.Add( self.m_button3, 0, wx.ALL|wx.ALIGN_RIGHT|wx.EXPAND, 0 )
 		
 		
 		self.m_panel21.SetSizer( bSizer91 )

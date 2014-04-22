@@ -22,7 +22,7 @@ class CodeTextCtrl(stc.StyledTextCtrl):
         'mono' : 'Courier New',
         'helv' : 'Courier New',
         'other': 'Courier New',
-        'size' : 11,
+        'size' : 16,
         'linesize': 10,
     }
 
@@ -188,7 +188,7 @@ class CodeTextCtrl(stc.StyledTextCtrl):
         if chr(charc) == "(" and self.CallTipActive() == 0:
             if self.BraceMatch(currentPos-1) == -1:
                 if self.GetCharAt(currentPos) != 40:
-                    self.AddText(')')
+                    #sself.AddText(')')
                     self.SetSelection(currentPos, currentPos)
                 self.TryShowCallTip(currentPos, word)
             return False

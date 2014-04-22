@@ -1439,8 +1439,8 @@
                                             </object>
                                         </object>
                                         <object class="sizeritem" expanded="1">
-                                            <property name="border">5</property>
-                                            <property name="flag">wxALL|wxALIGN_RIGHT</property>
+                                            <property name="border">0</property>
+                                            <property name="flag">wxALL|wxALIGN_RIGHT|wxEXPAND</property>
                                             <property name="proportion">0</property>
                                             <object class="wxButton" expanded="1">
                                                 <property name="BottomDockable">1</property>
@@ -1452,7 +1452,7 @@
                                                 <property name="aui_position"></property>
                                                 <property name="aui_row"></property>
                                                 <property name="best_size"></property>
-                                                <property name="bg"></property>
+                                                <property name="bg">wxSYS_COLOUR_HIGHLIGHT</property>
                                                 <property name="caption"></property>
                                                 <property name="caption_visible">1</property>
                                                 <property name="center_pane">0</property>
@@ -1465,13 +1465,13 @@
                                                 <property name="dock_fixed">0</property>
                                                 <property name="docking">Left</property>
                                                 <property name="enabled">1</property>
-                                                <property name="fg"></property>
+                                                <property name="fg">wxSYS_COLOUR_HIGHLIGHTTEXT</property>
                                                 <property name="floatable">1</property>
-                                                <property name="font"></property>
+                                                <property name="font">Tahoma,90,92,20,74,0</property>
                                                 <property name="gripper">0</property>
                                                 <property name="hidden">0</property>
                                                 <property name="id">wxID_ANY</property>
-                                                <property name="label">Run Program</property>
+                                                <property name="label">Play!</property>
                                                 <property name="max_size"></property>
                                                 <property name="maximize_button">0</property>
                                                 <property name="maximum_size"></property>
