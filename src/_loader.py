@@ -3,6 +3,7 @@
 # import _error # might need this if we actually caught exceptions?
 import serial
 import re
+import time
 
 def remove_comments(prg):
     new_prg = ""
