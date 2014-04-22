@@ -10,6 +10,14 @@ def waitprompt(c):
     c.expect('\n> ')
     time.sleep(0.1)
 
+def remove_comments(prg):
+    new_prg = ""
+    for line in prg.split('\n'):
+        if len(line) > 0 and line.strip()[0] != '#':
+            new_prg += line
+    return new_prg
+
+
 # replace \t and \n with a space and multiple spaces with a single space
 def make_single_line(prg):
     prg = prg.strip()
@@ -46,11 +54,10 @@ class Loader:
     def load(self, setup, loop):
         ser = serial.Serial(self.device, self.baud)
         time.sleep(1.5) # let Arduino bootloader timeout
+        setup = remove_comments(setup)
         setup = make_single_line(setup)
-        loop = make_single_line(loop)
         ser.write(setup)
         print "setup: " + setup # test
-        print "loop: " + loop # test
 
 if __name__ == "__main__":
     ser = serial.Serial('/dev/ttyACM0', 57600)
