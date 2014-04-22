@@ -22,7 +22,7 @@ class CodeTextCtrl(stc.StyledTextCtrl):
         'mono' : 'Courier New',
         'helv' : 'Courier New',
         'other': 'Courier New',
-        'size' : 11,
+        'size' : 16,
         'linesize': 10,
     }
 
