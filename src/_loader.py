@@ -44,34 +44,16 @@ class Loader:
         self.proc = None
 
     def load(self, setup, loop):
+        ser = serial.Serial(self.device, self.baud)
+        time.sleep(1.5) # let Arduino bootloader timeout
         setup = make_single_line(setup)
         loop = make_single_line(loop)
+        ser.write(setup)
         print "setup: " + setup # test
         print "loop: " + loop # test
-        # TODO: check to see if the device is still there...
-	setup = make_single_line(setup)
-	loop = make_single_line(loop)
-
-        if self.proc is not None:
-            self.proc.terminate()
-        self.proc = Process(target=load,
-                            args=(self.device, self.baud, setup, loop))
-        self.proc.start()
-
 
 if __name__ == "__main__":
-    #l = Loader('/dev/ttyACM0', 57600)
-    #while True: l.load(raw_input("setup: "), raw_input("loop: "))
-    s = """i = 0;
-while(i < 5)
-{
-    print i; print i;
-    if (i) {
-        draw(0,0);
-	if(a) draw(0,1);
-    }
->>>>>>> c24e1d300724617aae357a35738134128731e645
+    ser = serial.Serial('/dev/ttyACM0', 57600)
+    time.sleep(1.5)
+    ser.write("twinkle(red)")
 
-}
-"""
-    print make_single_line(s)
