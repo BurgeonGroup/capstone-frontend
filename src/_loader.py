@@ -10,10 +10,12 @@ def waitprompt(c):
     c.expect('\n> ')
     time.sleep(0.1)
 
+# replace \t and \n with a space and multiple spaces with a single space
 def make_single_line(prg):
-    prg = re.sub("\n", " ", prg)
-    prg = re.sub("\t", " ", prg)
-    prg = re.sub("[ ]+", " ", prg)
+    prg = prg.strip()
+    prg = re.sub("\n", " ", prg) # replace new lines with semicolons
+    prg = re.sub("\t", " ", prg) # replace tabs with spaces
+    prg = re.sub("[ ]+", " ", prg) # replace multiple spaces with a single space
     return prg
 
 def load(device, baud, setup, loop):
@@ -47,6 +49,9 @@ class Loader:
         print "setup: " + setup # test
         print "loop: " + loop # test
         # TODO: check to see if the device is still there...
+	setup = make_single_line(setup)
+	loop = make_single_line(loop)
+
         if self.proc is not None:
             self.proc.terminate()
         self.proc = Process(target=load,
@@ -55,6 +60,18 @@ class Loader:
 
 
 if __name__ == "__main__":
-    l = Loader('/dev/ttyACM0', 57600)
-    while True: l.load(raw_input("setup: "), raw_input("loop: "))
+    #l = Loader('/dev/ttyACM0', 57600)
+    #while True: l.load(raw_input("setup: "), raw_input("loop: "))
+    s = """i = 0;
+while(i < 5)
+{
+    print i; print i;
+    if (i) {
+        draw(0,0);
+	if(a) draw(0,1);
+    }
+>>>>>>> c24e1d300724617aae357a35738134128731e645
 
+}
+"""
+    print make_single_line(s)

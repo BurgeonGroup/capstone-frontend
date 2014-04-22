@@ -42,8 +42,15 @@ def finddev():
     #print(cmd)
     proc = subprocess.Popen(cmd, stdout = subprocess.PIPE, shell = True)
     line = proc.stdout.readline()
-    if line != '':
-        string = line.rstrip()
+    print "DEBUG: "+line
+    #look for the last string with dev name
+    while line != '':
+        prev_line = line
+        line = proc.stdout.readline()
+        print "DEBUG: "+line
+    print prev_line
+    if prev_line != '':
+        string = prev_line.rstrip()
         print ":", string
     else:
         print("ERROR: unable to find device file in file system.")
