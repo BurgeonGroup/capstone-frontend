@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Run in terminal
+Exec=gnome-terminal -e "sudo ./home/george/proj/capstone-frontend/main.py"
+Terminal=true
