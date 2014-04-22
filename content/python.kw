@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 swtich
 case
 break
@@ -22,3 +23,19 @@ blue
 yellow
 orange
 off
+=======
+swtich
+case
+break
+continue
+return
+void
+do
+while
+if
+else
+for
+goto
+sizeof
+blink
+>>>>>>> 8f0342c43775b2e4ce54ab49a57b138c8762738c

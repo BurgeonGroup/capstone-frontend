@@ -44,6 +44,10 @@ class Loader:
         self.proc = None
 
     def load(self, setup, loop):
+        setup = make_single_line(setup)
+        loop = make_single_line(loop)
+        print "setup: " + setup # test
+        print "loop: " + loop # test
         # TODO: check to see if the device is still there...
 	setup = make_single_line(setup)
 	loop = make_single_line(loop)
@@ -66,6 +70,7 @@ while(i < 5)
         draw(0,0);
 	if(a) draw(0,1);
     }
+>>>>>>> c24e1d300724617aae357a35738134128731e645
 
 }
 """
