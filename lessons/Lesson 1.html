@@ -2,37 +2,40 @@
 xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns:w="urn:schemas-microsoft-com:office:word"
 xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
-xmlns="http://www.w3.org/TR/REC-html40">
+xmlns:mv="http://macVmlSchemaUri" xmlns="http://www.w3.org/TR/REC-html40">
 
 <head>
-<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=Title content="Backend Functions.docx">
+<meta name=Keywords content="">
+<meta http-equiv=Content-Type content="text/html; charset=unicode">
 <meta name=ProgId content=Word.Document>
 <meta name=Generator content="Microsoft Word 14">
 <meta name=Originator content="Microsoft Word 14">
 <link rel=File-List href="Lesson%201_files/filelist.xml">
-<title>Backend Functions.docx</title>
+<title>Lesson 1: Control the Lights</title>
 <!--[if gte mso 9]><xml>
  <o:DocumentProperties>
   <o:Author>btgarber</o:Author>
-  <o:LastAuthor>btgarber</o:LastAuthor>
+  <o:LastAuthor>Austin Burnham</o:LastAuthor>
   <o:Revision>2</o:Revision>
-  <o:TotalTime>4</o:TotalTime>
-  <o:Created>2014-04-22T06:01:00Z</o:Created>
-  <o:LastSaved>2014-04-22T06:01:00Z</o:LastSaved>
+  <o:TotalTime>1</o:TotalTime>
+  <o:Created>2014-04-22T20:16:00Z</o:Created>
+  <o:LastSaved>2014-04-22T20:16:00Z</o:LastSaved>
   <o:Pages>1</o:Pages>
-  <o:Words>18</o:Words>
-  <o:Characters>106</o:Characters>
+  <o:Words>27</o:Words>
+  <o:Characters>160</o:Characters>
   <o:Lines>1</o:Lines>
   <o:Paragraphs>1</o:Paragraphs>
-  <o:CharactersWithSpaces>123</o:CharactersWithSpaces>
-  <o:Version>14.00</o:Version>
+  <o:CharactersWithSpaces>186</o:CharactersWithSpaces>
+  <o:Version>14.0</o:Version>
  </o:DocumentProperties>
+ <o:OfficeDocumentSettings>
+  <o:AllowPNG/>
+ </o:OfficeDocumentSettings>
 </xml><![endif]-->
-<link rel=themeData href="Lesson%201_files/themedata.thmx">
-<link rel=colorSchemeMapping href="Lesson%201_files/colorschememapping.xml">
+<link rel=themeData href="Lesson%201_files/themedata.xml">
 <!--[if gte mso 9]><xml>
  <w:WordDocument>
-  <w:View>Print</w:View>
   <w:DisplayBackgroundShape/>
   <w:SpellingState>Clean</w:SpellingState>
   <w:GrammarState>Clean</w:GrammarState>
@@ -55,7 +58,6 @@ xmlns="http://www.w3.org/TR/REC-html40">
    <w:DontGrowAutofit/>
    <w:SplitPgBreakAndParaMark/>
   </w:Compatibility>
-  <w:DoNotOptimizeForBrowser/>
   <m:mathPr>
    <m:mathFont m:val="Cambria Math"/>
    <m:brkBin m:val="before"/>
@@ -68,11 +70,13 @@ xmlns="http://www.w3.org/TR/REC-html40">
    <m:wrapIndent m:val="1440"/>
    <m:intLim m:val="subSup"/>
    <m:naryLim m:val="undOvr"/>
-  </m:mathPr></w:WordDocument>
+  </m:mathPr>  <w:DoNotOptimizeForBrowser/>
+
+ </w:WordDocument>
 </xml><![endif]--><!--[if gte mso 9]><xml>
  <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
   DefSemiHidden="true" DefQFormat="false" DefPriority="99"
-  LatentStyleCount="267">
+  LatentStyleCount="276">
   <w:LsdException Locked="false" Priority="0" SemiHidden="false"
    UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
   <w:LsdException Locked="false" Priority="9" SemiHidden="false"
@@ -329,30 +333,51 @@ xmlns="http://www.w3.org/TR/REC-html40">
 <style>
 <!--
  /* Font Definitions */
- @font-face
-	{font-family:Tahoma;
-	panose-1:2 11 6 4 3 5 4 4 2 4;
-	mso-font-charset:0;
-	mso-generic-font-family:swiss;
-	mso-font-pitch:variable;
-	mso-font-signature:-520081665 -1073717157 41 0 66047 0;}
 @font-face
-	{font-family:Consolas;
-	panose-1:2 11 6 9 2 2 4 3 2 4;
+	{font-family:Arial;
+	panose-1:2 11 6 4 2 2 2 2 2 4;
 	mso-font-charset:0;
-	mso-generic-font-family:modern;
-	mso-font-pitch:fixed;
-	mso-font-signature:-520092929 1073806591 9 0 415 0;}
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-536859905 -1073711037 9 0 511 0;}
+@font-face
+	{font-family:Times;
+	panose-1:2 0 5 0 0 0 0 0 0 0;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 0 0 0 1 0;}
+@font-face
+	{font-family:"ＭＳ 明朝";
+	mso-font-charset:78;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:1 134676480 16 0 131072 0;}
+@font-face
+	{font-family:"ＭＳ 明朝";
+	mso-font-charset:78;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:1 134676480 16 0 131072 0;}
 @font-face
 	{font-family:"Trebuchet MS";
 	panose-1:2 11 6 3 2 2 2 2 2 4;
 	mso-font-charset:0;
-	mso-generic-font-family:swiss;
+	mso-generic-font-family:auto;
 	mso-font-pitch:variable;
 	mso-font-signature:647 0 0 0 159 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:-520082689 -1073717157 41 0 66047 0;}
  /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
+
+p.MsoNormal, li.MsoNormal, div.MsoNormal
 	{mso-style-unhide:no;
+	mso-style-qformat:yes;
 	mso-style-parent:"";
 	margin:0in;
 	margin-bottom:.0001pt;
@@ -360,11 +385,14 @@ xmlns="http://www.w3.org/TR/REC-html40">
 	mso-pagination:widow-orphan;
 	font-size:11.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Arial","sans-serif";
+	font-family:Arial;
 	mso-fareast-font-family:Arial;
 	color:black;}
 h1
-	{mso-style-unhide:no;
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
 	mso-style-next:Normal;
 	margin-top:10.0pt;
 	margin-right:0in;
@@ -378,14 +406,17 @@ h1
 	mso-outline-level:1;
 	font-size:16.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:black;
 	mso-font-kerning:0pt;
 	font-weight:normal;}
 h1.CxSpFirst
-	{mso-style-unhide:no;
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin-top:10.0pt;
@@ -400,14 +431,17 @@ h1.CxSpFirst
 	mso-outline-level:1;
 	font-size:16.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:black;
 	mso-font-kerning:0pt;
 	font-weight:normal;}
 h1.CxSpMiddle
-	{mso-style-unhide:no;
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -419,14 +453,17 @@ h1.CxSpMiddle
 	mso-outline-level:1;
 	font-size:16.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:black;
 	mso-font-kerning:0pt;
 	font-weight:normal;}
 h1.CxSpLast
-	{mso-style-unhide:no;
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -438,14 +475,17 @@ h1.CxSpLast
 	mso-outline-level:1;
 	font-size:16.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:black;
 	mso-font-kerning:0pt;
 	font-weight:normal;}
 h2
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
 	mso-style-next:Normal;
 	margin-top:10.0pt;
 	margin-right:0in;
@@ -459,13 +499,16 @@ h2
 	mso-outline-level:2;
 	font-size:13.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:black;
 	mso-bidi-font-weight:normal;}
 h2.CxSpFirst
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin-top:10.0pt;
@@ -480,13 +523,16 @@ h2.CxSpFirst
 	mso-outline-level:2;
 	font-size:13.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:black;
 	mso-bidi-font-weight:normal;}
 h2.CxSpMiddle
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -498,13 +544,16 @@ h2.CxSpMiddle
 	mso-outline-level:2;
 	font-size:13.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:black;
 	mso-bidi-font-weight:normal;}
 h2.CxSpLast
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -516,13 +565,16 @@ h2.CxSpLast
 	mso-outline-level:2;
 	font-size:13.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:black;
 	mso-bidi-font-weight:normal;}
 h3
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
 	mso-style-next:Normal;
 	margin-top:8.0pt;
 	margin-right:0in;
@@ -536,13 +588,16 @@ h3
 	mso-outline-level:3;
 	font-size:12.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
 	mso-bidi-font-weight:normal;}
 h3.CxSpFirst
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin-top:8.0pt;
@@ -557,13 +612,16 @@ h3.CxSpFirst
 	mso-outline-level:3;
 	font-size:12.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
 	mso-bidi-font-weight:normal;}
 h3.CxSpMiddle
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -575,13 +633,16 @@ h3.CxSpMiddle
 	mso-outline-level:3;
 	font-size:12.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
 	mso-bidi-font-weight:normal;}
 h3.CxSpLast
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -593,13 +654,16 @@ h3.CxSpLast
 	mso-outline-level:3;
 	font-size:12.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
 	mso-bidi-font-weight:normal;}
 h4
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 4 Char";
 	mso-style-next:Normal;
 	margin-top:8.0pt;
 	margin-right:0in;
@@ -613,7 +677,7 @@ h4
 	mso-outline-level:4;
 	font-size:11.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
@@ -621,7 +685,10 @@ h4
 	text-decoration:underline;
 	text-underline:single;}
 h4.CxSpFirst
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 4 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin-top:8.0pt;
@@ -636,7 +703,7 @@ h4.CxSpFirst
 	mso-outline-level:4;
 	font-size:11.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
@@ -644,7 +711,10 @@ h4.CxSpFirst
 	text-decoration:underline;
 	text-underline:single;}
 h4.CxSpMiddle
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 4 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -656,7 +726,7 @@ h4.CxSpMiddle
 	mso-outline-level:4;
 	font-size:11.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
@@ -664,7 +734,10 @@ h4.CxSpMiddle
 	text-decoration:underline;
 	text-underline:single;}
 h4.CxSpLast
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 4 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -676,7 +749,7 @@ h4.CxSpLast
 	mso-outline-level:4;
 	font-size:11.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
@@ -684,7 +757,10 @@ h4.CxSpLast
 	text-decoration:underline;
 	text-underline:single;}
 h5
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 5 Char";
 	mso-style-next:Normal;
 	margin-top:8.0pt;
 	margin-right:0in;
@@ -698,13 +774,16 @@ h5
 	mso-outline-level:5;
 	font-size:11.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
 	font-weight:normal;}
 h5.CxSpFirst
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 5 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin-top:8.0pt;
@@ -719,13 +798,16 @@ h5.CxSpFirst
 	mso-outline-level:5;
 	font-size:11.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
 	font-weight:normal;}
 h5.CxSpMiddle
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 5 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -737,13 +819,16 @@ h5.CxSpMiddle
 	mso-outline-level:5;
 	font-size:11.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
 	font-weight:normal;}
 h5.CxSpLast
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 5 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -755,13 +840,16 @@ h5.CxSpLast
 	mso-outline-level:5;
 	font-size:11.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
 	font-weight:normal;}
 h6
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 6 Char";
 	mso-style-next:Normal;
 	margin-top:8.0pt;
 	margin-right:0in;
@@ -775,7 +863,7 @@ h6
 	mso-outline-level:6;
 	font-size:11.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
@@ -783,7 +871,10 @@ h6
 	font-style:italic;
 	mso-bidi-font-style:normal;}
 h6.CxSpFirst
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 6 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin-top:8.0pt;
@@ -798,7 +889,7 @@ h6.CxSpFirst
 	mso-outline-level:6;
 	font-size:11.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
@@ -806,7 +897,10 @@ h6.CxSpFirst
 	font-style:italic;
 	mso-bidi-font-style:normal;}
 h6.CxSpMiddle
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 6 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -818,7 +912,7 @@ h6.CxSpMiddle
 	mso-outline-level:6;
 	font-size:11.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
@@ -826,7 +920,10 @@ h6.CxSpMiddle
 	font-style:italic;
 	mso-bidi-font-style:normal;}
 h6.CxSpLast
-	{mso-style-unhide:no;
+	{mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 6 Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -838,7 +935,7 @@ h6.CxSpLast
 	mso-outline-level:6;
 	font-size:11.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
@@ -853,7 +950,7 @@ p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
 	margin-bottom:.0001pt;
 	mso-pagination:widow-orphan;
 	font-size:10.0pt;
-	font-family:"Arial","sans-serif";
+	font-family:Arial;
 	mso-fareast-font-family:Arial;
 	color:black;}
 span.MsoCommentReference
@@ -862,7 +959,10 @@ span.MsoCommentReference
 	mso-ansi-font-size:8.0pt;
 	mso-bidi-font-size:8.0pt;}
 p.MsoTitle, li.MsoTitle, div.MsoTitle
-	{mso-style-unhide:no;
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
 	mso-style-next:Normal;
 	margin:0in;
 	margin-bottom:.0001pt;
@@ -872,12 +972,15 @@ p.MsoTitle, li.MsoTitle, div.MsoTitle
 	page-break-after:avoid;
 	font-size:21.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:black;}
 p.MsoTitleCxSpFirst, li.MsoTitleCxSpFirst, div.MsoTitleCxSpFirst
-	{mso-style-unhide:no;
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -888,12 +991,15 @@ p.MsoTitleCxSpFirst, li.MsoTitleCxSpFirst, div.MsoTitleCxSpFirst
 	page-break-after:avoid;
 	font-size:21.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:black;}
 p.MsoTitleCxSpMiddle, li.MsoTitleCxSpMiddle, div.MsoTitleCxSpMiddle
-	{mso-style-unhide:no;
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -904,12 +1010,15 @@ p.MsoTitleCxSpMiddle, li.MsoTitleCxSpMiddle, div.MsoTitleCxSpMiddle
 	page-break-after:avoid;
 	font-size:21.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:black;}
 p.MsoTitleCxSpLast, li.MsoTitleCxSpLast, div.MsoTitleCxSpLast
-	{mso-style-unhide:no;
+	{mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Title Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -920,12 +1029,15 @@ p.MsoTitleCxSpLast, li.MsoTitleCxSpLast, div.MsoTitleCxSpLast
 	page-break-after:avoid;
 	font-size:21.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:black;}
 p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
-	{mso-style-unhide:no;
+	{mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Subtitle Char";
 	mso-style-next:Normal;
 	margin-top:0in;
 	margin-right:0in;
@@ -937,14 +1049,17 @@ p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
 	page-break-after:avoid;
 	font-size:13.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
 	font-style:italic;
 	mso-bidi-font-style:normal;}
 p.MsoSubtitleCxSpFirst, li.MsoSubtitleCxSpFirst, div.MsoSubtitleCxSpFirst
-	{mso-style-unhide:no;
+	{mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Subtitle Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -955,14 +1070,17 @@ p.MsoSubtitleCxSpFirst, li.MsoSubtitleCxSpFirst, div.MsoSubtitleCxSpFirst
 	page-break-after:avoid;
 	font-size:13.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
 	font-style:italic;
 	mso-bidi-font-style:normal;}
 p.MsoSubtitleCxSpMiddle, li.MsoSubtitleCxSpMiddle, div.MsoSubtitleCxSpMiddle
-	{mso-style-unhide:no;
+	{mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Subtitle Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin:0in;
@@ -973,14 +1091,17 @@ p.MsoSubtitleCxSpMiddle, li.MsoSubtitleCxSpMiddle, div.MsoSubtitleCxSpMiddle
 	page-break-after:avoid;
 	font-size:13.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
 	font-style:italic;
 	mso-bidi-font-style:normal;}
 p.MsoSubtitleCxSpLast, li.MsoSubtitleCxSpLast, div.MsoSubtitleCxSpLast
-	{mso-style-unhide:no;
+	{mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Subtitle Char";
 	mso-style-next:Normal;
 	mso-style-type:export-only;
 	margin-top:0in;
@@ -993,7 +1114,7 @@ p.MsoSubtitleCxSpLast, li.MsoSubtitleCxSpLast, div.MsoSubtitleCxSpLast
 	page-break-after:avoid;
 	font-size:13.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Trebuchet MS","sans-serif";
+	font-family:"Trebuchet MS";
 	mso-fareast-font-family:"Trebuchet MS";
 	mso-bidi-font-family:"Trebuchet MS";
 	color:#666666;
@@ -1007,9 +1128,150 @@ p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
 	margin-bottom:.0001pt;
 	mso-pagination:widow-orphan;
 	font-size:8.0pt;
-	font-family:"Tahoma","sans-serif";
+	font-family:Tahoma;
 	mso-fareast-font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
 	color:black;}
+p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
+	{mso-style-priority:1;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:Times;
+	mso-fareast-font-family:"ＭＳ 明朝";
+	mso-fareast-theme-font:minor-fareast;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:minor-bidi;
+	mso-fareast-language:JA;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	mso-ansi-font-size:16.0pt;
+	mso-bidi-font-size:16.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"ＭＳ ゴシック";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#345A8A;
+	mso-themecolor:accent1;
+	mso-themeshade:181;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"ＭＳ ゴシック";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 3";
+	mso-ansi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"ＭＳ ゴシック";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+span.Heading4Char
+	{mso-style-name:"Heading 4 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 4";
+	mso-ansi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"ＭＳ ゴシック";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;
+	font-style:italic;}
+span.Heading5Char
+	{mso-style-name:"Heading 5 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 5";
+	mso-ansi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"ＭＳ ゴシック";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#243F60;
+	mso-themecolor:accent1;
+	mso-themeshade:127;}
+span.Heading6Char
+	{mso-style-name:"Heading 6 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 6";
+	mso-ansi-font-size:11.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"ＭＳ ゴシック";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#243F60;
+	mso-themecolor:accent1;
+	mso-themeshade:127;
+	font-style:italic;}
 span.CommentTextChar
 	{mso-style-name:"Comment Text Char";
 	mso-style-noshow:yes;
@@ -1018,6 +1280,49 @@ span.CommentTextChar
 	mso-style-locked:yes;
 	mso-style-link:"Comment Text";
 	mso-ansi-font-size:10.0pt;}
+span.TitleChar
+	{mso-style-name:"Title Char";
+	mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Title;
+	mso-ansi-font-size:26.0pt;
+	mso-bidi-font-size:26.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"ＭＳ ゴシック";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#17365D;
+	mso-themecolor:text2;
+	mso-themeshade:191;
+	letter-spacing:.25pt;
+	mso-font-kerning:14.0pt;}
+span.SubtitleChar
+	{mso-style-name:"Subtitle Char";
+	mso-style-priority:11;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:Subtitle;
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:Calibri;
+	mso-ascii-font-family:Calibri;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"ＭＳ ゴシック";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Calibri;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	letter-spacing:.75pt;
+	font-style:italic;}
 span.BalloonTextChar
 	{mso-style-name:"Balloon Text Char";
 	mso-style-noshow:yes;
@@ -1027,7 +1332,7 @@ span.BalloonTextChar
 	mso-style-link:"Balloon Text";
 	mso-ansi-font-size:8.0pt;
 	mso-bidi-font-size:8.0pt;
-	font-family:"Tahoma","sans-serif";
+	font-family:Tahoma;
 	mso-ascii-font-family:Tahoma;
 	mso-hansi-font-family:Tahoma;
 	mso-bidi-font-family:Tahoma;}
@@ -1037,16 +1342,15 @@ span.GramE
 .MsoChpDefault
 	{mso-style-type:export-only;
 	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Arial","sans-serif";
+	font-family:Arial;
 	mso-ascii-font-family:Arial;
 	mso-fareast-font-family:Arial;
 	mso-hansi-font-family:Arial;
 	mso-bidi-font-family:Arial;
 	color:black;}
-.MsoPapDefault
-	{mso-style-type:export-only;
-	line-height:115%;}
 @page WordSection1
 	{size:8.5in 11.0in;
 	margin:1.0in 1.0in 1.0in 1.0in;
@@ -1060,7 +1364,8 @@ div.WordSection1
 <!--[if gte mso 10]>
 <style>
  /* Style Definitions */
- table.MsoNormalTable
+
+table.MsoNormalTable
 	{mso-style-name:"Table Normal";
 	mso-tstyle-rowband-size:0;
 	mso-tstyle-colband-size:0;
@@ -1070,15 +1375,13 @@ div.WordSection1
 	mso-padding-alt:0in 5.4pt 0in 5.4pt;
 	mso-para-margin:0in;
 	mso-para-margin-bottom:.0001pt;
-	line-height:115%;
 	mso-pagination:widow-orphan;
-	font-size:11.0pt;
-	mso-bidi-font-size:10.0pt;
-	font-family:"Arial","sans-serif";
+	font-size:10.0pt;
+	font-family:Arial;
 	color:black;}
 </style>
 <![endif]--><!--[if gte mso 9]><xml>
- <o:shapedefaults v:ext="edit" spidmax="1026"/>
+ <o:shapedefaults v:ext="edit" spidmax="1027"/>
 </xml><![endif]--><!--[if gte mso 9]><xml>
  <o:shapelayout v:ext="edit">
   <o:idmap v:ext="edit" data="1"/>
@@ -1089,38 +1392,24 @@ div.WordSection1
 
 <div class=WordSection1>
 
-<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
-style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:115%;font-family:
-Consolas;mso-fareast-font-family:Consolas;color:#4F6228;mso-themecolor:accent3;
-mso-themeshade:128;mso-style-textfill-fill-color:#4F6228;mso-style-textfill-fill-themecolor:
-accent3;mso-style-textfill-fill-alpha:100.0%;mso-style-textfill-fill-colortransforms:
-lumm=50000'>What happens when you write this?<o:p></o:p></span></b></p>
+<p class=MsoNormal><span style='font-size:13.0pt;line-height:115%'>Learn to
+control the lights by typing code.<br>
+<br>
+Get started by typing one line of code: <o:p></o:p></span></p>
 
-<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
-style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:115%;font-family:
-Consolas;mso-fareast-font-family:Consolas;color:windowtext'><o:p>&nbsp;</o:p></span></b></p>
+<p class=MsoNormal><span class=GramE><span style='font-size:13.0pt;line-height:
+115%;background:silver;mso-highlight:silver'>twinkle</span></span><span
+style='font-size:13.0pt;line-height:115%;background:silver;mso-highlight:silver'>();</span><span
+style='font-size:13.0pt;line-height:115%'><o:p></o:p></span></p>
 
-<p class=MsoNormal><span class=GramE><b style='mso-bidi-font-weight:normal'><span
-style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:115%;font-family:
-Consolas;mso-fareast-font-family:Consolas;color:windowtext;background:yellow;
-mso-highlight:yellow'>Twinkle(</span></b></span><b style='mso-bidi-font-weight:
-normal'><span style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:
-115%;font-family:Consolas;mso-fareast-font-family:Consolas;color:windowtext;
-background:yellow;mso-highlight:yellow'>);</span></b><b style='mso-bidi-font-weight:
-normal'><span style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:
-115%;font-family:Consolas;mso-fareast-font-family:Consolas;color:windowtext'><o:p></o:p></span></b></p>
+<p class=MsoNoSpacing><span style='font-size:13.0pt;font-family:Arial'>The end
+of a line should always have one of <span class=GramE>these <span
+style='background:silver;mso-highlight:silver'>;</span></span><o:p></o:p></span></p>
 
-<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
-style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:115%;font-family:
-Consolas;mso-fareast-font-family:Consolas;color:#1F497D;mso-themecolor:text2'><o:p>&nbsp;</o:p></span></b></p>
+<p class=MsoNoSpacing><span style='font-size:13.0pt;font-family:Arial'>Run the
+program to see what it does!<o:p></o:p></span></p>
 
-<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
-style='font-size:14.0pt;mso-bidi-font-size:10.0pt;line-height:115%;font-family:
-Consolas;mso-fareast-font-family:Consolas;color:#4F6228;mso-themecolor:accent3;
-mso-themeshade:128;mso-style-textfill-fill-color:#4F6228;mso-style-textfill-fill-themecolor:
-accent3;mso-style-textfill-fill-alpha:100.0%;mso-style-textfill-fill-colortransforms:
-lumm=50000'>As always, make sure you type it right, or the computer will not
-understand!<o:p></o:p></span></b></p>
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
 
 </div>
 
