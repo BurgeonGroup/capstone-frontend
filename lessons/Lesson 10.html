@@ -7,33 +7,33 @@ xmlns:mv="http://macVmlSchemaUri" xmlns="http://www.w3.org/TR/REC-html40">
 <head>
 <meta name=Title content="Backend Functions.docx">
 <meta name=Keywords content="">
-<meta http-equiv=Content-Type content="text/html; charset=unicode">
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
 <meta name=ProgId content=Word.Document>
 <meta name=Generator content="Microsoft Word 14">
 <meta name=Originator content="Microsoft Word 14">
-<link rel=File-List href="Lesson%201_files/filelist.xml">
-<title>Lesson 1: Control the Lights</title>
+<link rel=File-List href="Lesson%2010_files/filelist.xml">
+<title>Backend Functions.docx</title>
 <!--[if gte mso 9]><xml>
  <o:DocumentProperties>
   <o:Author>btgarber</o:Author>
   <o:LastAuthor>Austin Burnham</o:LastAuthor>
   <o:Revision>2</o:Revision>
   <o:TotalTime>1</o:TotalTime>
-  <o:Created>2014-04-22T20:16:00Z</o:Created>
-  <o:LastSaved>2014-04-22T20:16:00Z</o:LastSaved>
+  <o:Created>2014-04-30T00:26:00Z</o:Created>
+  <o:LastSaved>2014-04-30T00:26:00Z</o:LastSaved>
   <o:Pages>1</o:Pages>
-  <o:Words>27</o:Words>
-  <o:Characters>160</o:Characters>
+  <o:Words>41</o:Words>
+  <o:Characters>235</o:Characters>
   <o:Lines>1</o:Lines>
   <o:Paragraphs>1</o:Paragraphs>
-  <o:CharactersWithSpaces>186</o:CharactersWithSpaces>
+  <o:CharactersWithSpaces>275</o:CharactersWithSpaces>
   <o:Version>14.0</o:Version>
  </o:DocumentProperties>
  <o:OfficeDocumentSettings>
   <o:AllowPNG/>
  </o:OfficeDocumentSettings>
 </xml><![endif]-->
-<link rel=themeData href="Lesson%201_files/themedata.xml">
+<link rel=themeData href="Lesson%2010_files/themedata.xml">
 <!--[if gte mso 9]><xml>
  <w:WordDocument>
   <w:DisplayBackgroundShape/>
@@ -48,7 +48,7 @@ xmlns:mv="http://macVmlSchemaUri" xmlns="http://www.w3.org/TR/REC-html40">
   <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
   <w:DoNotPromoteQF/>
   <w:LidThemeOther>EN-US</w:LidThemeOther>
-  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeAsian>JA</w:LidThemeAsian>
   <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
   <w:Compatibility>
    <w:BreakWrappedTables/>
@@ -70,9 +70,7 @@ xmlns:mv="http://macVmlSchemaUri" xmlns="http://www.w3.org/TR/REC-html40">
    <m:wrapIndent m:val="1440"/>
    <m:intLim m:val="subSup"/>
    <m:naryLim m:val="undOvr"/>
-  </m:mathPr>  <w:DoNotOptimizeForBrowser/>
-
- </w:WordDocument>
+  </m:mathPr></w:WordDocument>
 </xml><![endif]--><!--[if gte mso 9]><xml>
  <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
   DefSemiHidden="true" DefQFormat="false" DefPriority="99"
@@ -352,20 +350,13 @@ xmlns:mv="http://macVmlSchemaUri" xmlns="http://www.w3.org/TR/REC-html40">
 	mso-font-charset:78;
 	mso-generic-font-family:auto;
 	mso-font-pitch:variable;
-	mso-font-signature:1 134676480 16 0 131072 0;}
+	mso-font-signature:-536870145 1791491579 18 0 131231 0;}
 @font-face
 	{font-family:"ＭＳ 明朝";
 	mso-font-charset:78;
 	mso-generic-font-family:auto;
 	mso-font-pitch:variable;
-	mso-font-signature:1 134676480 16 0 131072 0;}
-@font-face
-	{font-family:"Trebuchet MS";
-	panose-1:2 11 6 3 2 2 2 2 2 4;
-	mso-font-charset:0;
-	mso-generic-font-family:auto;
-	mso-font-pitch:variable;
-	mso-font-signature:647 0 0 0 159 0;}
+	mso-font-signature:-536870145 1791491579 18 0 131231 0;}
 @font-face
 	{font-family:Tahoma;
 	panose-1:2 11 6 4 3 5 4 4 2 4;
@@ -373,8 +364,14 @@ xmlns:mv="http://macVmlSchemaUri" xmlns="http://www.w3.org/TR/REC-html40">
 	mso-generic-font-family:auto;
 	mso-font-pitch:variable;
 	mso-font-signature:-520082689 -1073717157 41 0 66047 0;}
+@font-face
+	{font-family:"Trebuchet MS";
+	panose-1:2 11 6 3 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:647 0 0 0 159 0;}
  /* Style Definitions */
-
 p.MsoNormal, li.MsoNormal, div.MsoNormal
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -1336,6 +1333,9 @@ span.BalloonTextChar
 	mso-ascii-font-family:Tahoma;
 	mso-hansi-font-family:Tahoma;
 	mso-bidi-font-family:Tahoma;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
 span.GramE
 	{mso-style-name:"";
 	mso-gram-e:yes;}
@@ -1364,7 +1364,6 @@ div.WordSection1
 <!--[if gte mso 10]>
 <style>
  /* Style Definitions */
-
 table.MsoNormalTable
 	{mso-style-name:"Table Normal";
 	mso-tstyle-rowband-size:0;
@@ -1392,22 +1391,43 @@ table.MsoNormalTable
 
 <div class=WordSection1>
 
-<p class=MsoNormal><span style='font-size:13.0pt;line-height:115%'>Learn to
-control the lights by typing code.<br>
-<br>
-Get started by typing one line of code: <o:p></o:p></span></p>
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;mso-fareast-font-family:
+"ＭＳ 明朝";mso-fareast-theme-font:minor-fareast;color:windowtext;mso-fareast-language:
+JA'>What if you want your program to keep going over and over again? A “while
+loop” is used in programming to make things happen over and over.<o:p></o:p></span></p>
 
-<p class=MsoNormal><span class=GramE><span style='font-size:13.0pt;line-height:
-115%;background:silver;mso-highlight:silver'>twinkle</span></span><span
-style='font-size:13.0pt;line-height:115%;background:silver;mso-highlight:silver'>();</span><span
-style='font-size:13.0pt;line-height:115%'><o:p></o:p></span></p>
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;mso-fareast-font-family:
+"ＭＳ 明朝";mso-fareast-theme-font:minor-fareast;color:windowtext;mso-fareast-language:
+JA'><o:p>&nbsp;</o:p></span></p>
 
-<p class=MsoNoSpacing><span style='font-size:13.0pt;font-family:Arial'>The end
-of a line should always have one of <span class=GramE>these <span
-style='background:silver;mso-highlight:silver'>;</span></span><o:p></o:p></span></p>
+<p class=MsoNormal><span class=GramE><span style='font-size:12.0pt;line-height:
+115%;mso-fareast-font-family:"ＭＳ 明朝";mso-fareast-theme-font:minor-fareast;
+color:windowtext;background:silver;mso-highlight:silver;mso-fareast-language:
+JA'>while</span></span><span style='font-size:12.0pt;line-height:115%;
+mso-fareast-font-family:"ＭＳ 明朝";mso-fareast-theme-font:minor-fareast;
+color:windowtext;background:silver;mso-highlight:silver;mso-fareast-language:
+JA'> (1) {<o:p></o:p></span></p>
 
-<p class=MsoNoSpacing><span style='font-size:13.0pt;font-family:Arial'>Run the
-program to see what it does!<o:p></o:p></span></p>
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;mso-fareast-font-family:
+"ＭＳ 明朝";mso-fareast-theme-font:minor-fareast;color:windowtext;background:silver;
+mso-highlight:silver;mso-fareast-language:JA'><span
+style="mso-spacerun:yes">     </span><span class=GramE>write</span> (”A TO Z
+“);<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;mso-fareast-font-family:
+"ＭＳ 明朝";mso-fareast-theme-font:minor-fareast;color:windowtext;background:silver;
+mso-highlight:silver;mso-fareast-language:JA'>}</span><span style='font-size:
+12.0pt;line-height:115%;mso-fareast-font-family:"ＭＳ 明朝";mso-fareast-theme-font:
+minor-fareast;color:windowtext;mso-fareast-language:JA'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;mso-fareast-font-family:
+"ＭＳ 明朝";mso-fareast-theme-font:minor-fareast;color:windowtext;mso-fareast-language:
+JA'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:12.0pt;line-height:115%;mso-fareast-font-family:
+"ＭＳ 明朝";mso-fareast-theme-font:minor-fareast;color:windowtext;mso-fareast-language:
+JA'>The 1 tells the computer to keep repeating. Does it do the same thing if
+you change it to a 0?<o:p></o:p></span></p>
 
 <p class=MsoNormal><o:p>&nbsp;</o:p></p>
 
