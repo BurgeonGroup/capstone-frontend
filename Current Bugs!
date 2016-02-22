@@ -1,0 +1,3 @@
+This has worked in the past, but my sd card corrupted.  I am currently trying to build a working version.
+I can only get the front-end to run on wheezy, but it won't commuicate with the arduino.  
+I tried to install on Jessie with wxpython3.0.1.0 (the standard package for Jessie) but it won't run at all.
